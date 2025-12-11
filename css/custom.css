@@ -1,111 +1,355 @@
-/* 文章页H1-H6图标样式效果 */
-#article-container h1::before, 
-#article-container h2::before, 
-#article-container h3::before, 
-#article-container h4::before, 
-#article-container h5::before, 
-#article-container h6::before {
-    /* 使用 Fort Awesome 字体 */
-    font-family: "Font Awesome 6 Free";
-    font-weight: 900;  /* Solid 图标使用 900 */
-    margin-right: 10px;
-    
-    /* 旋转动画 */
-    -webkit-animation: ccc 1.6s linear infinite;
-    animation: ccc 1.6s linear infinite;
-    
-    /* 默认图标大小 */
-    font-size: 1em;
-    display: inline-block;
+/* ============================================
+   FontAwesome 图标字体支持
+============================================ */
+
+/* 确保 FontAwesome 图标正确显示 */
+@font-face {
+    font-family: 'Font Awesome 6 Free';
+    font-style: normal;
+    font-weight: 900;
+    font-display: block;
+    src: url("https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2") format("woff2"),
+         url("https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/webfonts/fa-solid-900.ttf") format("truetype");
 }
 
-/* H1 标题 - 风车图标 */
-#article-container h1::before {
-    content: "\f863"; /* 风车图标 */
-    color: #ff7849;   /* 橙色 */
-}
+/* ============================================
+   文章标题 H1-H6 图标样式
+============================================ */
 
-/* H2 标题 - 其他图标（示例） */
-#article-container h2::before {
-    content: "\f0a4"; /* 前进箭头 */
-    color: #3498db;   /* 蓝色 */
-    animation-duration: 2s; /* 调整动画速度 */
-}
-
-/* H3 标题 */
-#article-container h3::before {
-    content: "\f0c8"; /* 方块图标 */
-    color: #2ecc71;   /* 绿色 */
-}
-
-/* H4 标题 */
-#article-container h4::before {
-    content: "\f111"; /* 圆点图标 */
-    color: #9b59b6;   /* 紫色 */
-}
-
-/* H5 标题 */
-#article-container h5::before {
-    content: "\f10c"; /* 空心圆 */
-    color: #e74c3c;   /* 红色 */
-}
-
-/* H6 标题 */
-#article-container h6::before {
-    content: "\f192"; /* 实心圆点 */
-    color: #95a5a6;   /* 灰色 */
-}
-
-/* 旋转动画定义 */
-@-webkit-keyframes ccc {
-    0% {
-        -webkit-transform: rotate(0deg);
-        transform: rotate(0deg);
-    }
-    100% {
-        -webkit-transform: rotate(-360deg);
-        transform: rotate(-360deg);
-    }
-}
-
-@keyframes ccc {
-    0% {
-        -webkit-transform: rotate(0deg);
-        transform: rotate(0deg);
-    }
-    100% {
-        -webkit-transform: rotate(-360deg);
-        transform: rotate(-360deg);
-    }
-}
-
-/* 可选：调整图标位置 */
+/* 为所有文章标题添加图标容器 */
 #article-container h1,
 #article-container h2,
 #article-container h3,
 #article-container h4,
 #article-container h5,
 #article-container h6 {
-    display: flex;
-    align-items: center;
+    position: relative;
+    padding-left: 35px !important;
+    margin-left: 0 !important;
+    border-left: none !important;
 }
 
-#article-container h1::before,
-#article-container h2::before,
-#article-container h3::before,
-#article-container h4::before,
-#article-container h5::before,
+/* 移除默认的列表样式（如果有） */
+#article-container h1:before,
+#article-container h2:before,
+#article-container h3:before,
+#article-container h4:before,
+#article-container h5:before,
+#article-container h6:before {
+    list-style-type: none !important;
+    list-style: none !important;
+}
+
+/* H1 标题 - 风车图标 */
+#article-container h1::before {
+    content: "\f863" !important; /* 风车图标 */
+    font-family: 'Font Awesome 6 Free' !important;
+    font-weight: 900 !important; /* Solid 样式 */
+    color: #ff7849 !important; /* 橙色 */
+    position: absolute !important;
+    left: 0 !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    font-size: 1.4em !important;
+    width: 30px !important;
+    height: 30px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    
+    /* 旋转动画 */
+    -webkit-animation: icon-spin 2s linear infinite !important;
+    animation: icon-spin 2s linear infinite !important;
+}
+
+/* H2 标题 - 齿轮图标 */
+#article-container h2::before {
+    content: "\f013" !important; /* 齿轮图标 */
+    font-family: 'Font Awesome 6 Free' !important;
+    font-weight: 900 !important;
+    color: #3498db !important; /* 蓝色 */
+    position: absolute !important;
+    left: 0 !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    font-size: 1.2em !important;
+    width: 26px !important;
+    height: 26px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    
+    /* 缓慢旋转动画 */
+    -webkit-animation: icon-spin-slow 3s linear infinite !important;
+    animation: icon-spin-slow 3s linear infinite !important;
+}
+
+/* H3 标题 - 灯泡图标 */
+#article-container h3::before {
+    content: "\f0eb" !important; /* 灯泡图标 */
+    font-family: 'Font Awesome 6 Free' !important;
+    font-weight: 900 !important;
+    color: #f1c40f !important; /* 黄色 */
+    position: absolute !important;
+    left: 0 !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    font-size: 1.1em !important;
+    width: 24px !important;
+    height: 24px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    
+    /* 闪烁动画 */
+    -webkit-animation: icon-blink 2s ease-in-out infinite !important;
+    animation: icon-blink 2s ease-in-out infinite !important;
+}
+
+/* H4 标题 - 书签图标 */
+#article-container h4::before {
+    content: "\f02e" !important; /* 书签图标 */
+    font-family: 'Font Awesome 6 Free' !important;
+    font-weight: 900 !important;
+    color: #2ecc71 !important; /* 绿色 */
+    position: absolute !important;
+    left: 0 !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    font-size: 1em !important;
+    width: 22px !important;
+    height: 22px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* H5 标题 - 旗子图标 */
+#article-container h5::before {
+    content: "\f024" !important; /* 旗子图标 */
+    font-family: 'Font Awesome 6 Free' !important;
+    font-weight: 900 !important;
+    color: #9b59b6 !important; /* 紫色 */
+    position: absolute !important;
+    left: 0 !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    font-size: 0.9em !important;
+    width: 20px !important;
+    height: 20px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* H6 标题 - 点图标 */
 #article-container h6::before {
-    margin-right: 12px;
+    content: "\f192" !important; /* 圆点图标 */
+    font-family: 'Font Awesome 6 Free' !important;
+    font-weight: 900 !important;
+    color: #95a5a6 !important; /* 灰色 */
+    position: absolute !important;
+    left: 0 !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    font-size: 0.8em !important;
+    width: 18px !important;
+    height: 18px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
 }
 
-/* 可选：鼠标悬停时停止动画 */
+/* ============================================
+   动画定义
+============================================ */
+
+/* 快速旋转动画 (用于H1风车) */
+@-webkit-keyframes icon-spin {
+    0% {
+        -webkit-transform: translateY(-50%) rotate(0deg);
+        transform: translateY(-50%) rotate(0deg);
+    }
+    100% {
+        -webkit-transform: translateY(-50%) rotate(360deg);
+        transform: translateY(-50%) rotate(360deg);
+    }
+}
+
+@keyframes icon-spin {
+    0% {
+        -webkit-transform: translateY(-50%) rotate(0deg);
+        transform: translateY(-50%) rotate(0deg);
+    }
+    100% {
+        -webkit-transform: translateY(-50%) rotate(360deg);
+        transform: translateY(-50%) rotate(360deg);
+    }
+}
+
+/* 慢速旋转动画 (用于H2齿轮) */
+@-webkit-keyframes icon-spin-slow {
+    0% {
+        -webkit-transform: translateY(-50%) rotate(0deg);
+        transform: translateY(-50%) rotate(0deg);
+    }
+    100% {
+        -webkit-transform: translateY(-50%) rotate(360deg);
+        transform: translateY(-50%) rotate(360deg);
+    }
+}
+
+@keyframes icon-spin-slow {
+    0% {
+        -webkit-transform: translateY(-50%) rotate(0deg);
+        transform: translateY(-50%) rotate(0deg);
+    }
+    100% {
+        -webkit-transform: translateY(-50%) rotate(360deg);
+        transform: translateY(-50%) rotate(360deg);
+    }
+}
+
+/* 闪烁动画 (用于H3灯泡) */
+@-webkit-keyframes icon-blink {
+    0%, 100% {
+        opacity: 1;
+        -webkit-filter: brightness(100%);
+        filter: brightness(100%);
+    }
+    50% {
+        opacity: 0.7;
+        -webkit-filter: brightness(150%);
+        filter: brightness(150%);
+    }
+}
+
+@keyframes icon-blink {
+    0%, 100% {
+        opacity: 1;
+        -webkit-filter: brightness(100%);
+        filter: brightness(100%);
+    }
+    50% {
+        opacity: 0.7;
+        -webkit-filter: brightness(150%);
+        filter: brightness(150%);
+    }
+}
+
+/* ============================================
+   鼠标悬停效果
+============================================ */
+
+/* 鼠标悬停时动画暂停 */
 #article-container h1:hover::before,
 #article-container h2:hover::before,
 #article-container h3:hover::before,
 #article-container h4:hover::before,
 #article-container h5:hover::before,
 #article-container h6:hover::before {
-    -webkit-animation-play-state: paused;
-    animation-play-state: paused;
+    -webkit-animation-play-state: paused !important;
+    animation-play-state: paused !important;
 }
+
+/* 鼠标悬停时图标放大 */
+#article-container h1:hover::before {
+    font-size: 1.6em !important;
+    color: #ff5500 !important;
+}
+
+#article-container h2:hover::before {
+    font-size: 1.3em !important;
+    color: #2980b9 !important;
+}
+
+#article-container h3:hover::before {
+    font-size: 1.2em !important;
+    color: #f39c12 !important;
+}
+
+#article-container h4:hover::before {
+    font-size: 1.1em !important;
+    color: #27ae60 !important;
+}
+
+#article-container h5:hover::before {
+    font-size: 1em !important;
+    color: #8e44ad !important;
+}
+
+#article-container h6:hover::before {
+    font-size: 0.9em !important;
+    color: #7f8c8d !important;
+}
+
+/* ============================================
+   兼容性修复
+============================================ */
+
+/* 确保链接图标不干扰 */
+#article-container h1 .headerlink,
+#article-container h2 .headerlink,
+#article-container h3 .headerlink,
+#article-container h4 .headerlink,
+#article-container h5 .headerlink,
+#article-container h6 .headerlink {
+    position: relative !important;
+    z-index: 10 !important;
+    margin-left: 5px !important;
+}
+
+/* 修复移动端显示 */
+@media screen and (max-width: 768px) {
+    #article-container h1,
+    #article-container h2,
+    #article-container h3,
+    #article-container h4,
+    #article-container h5,
+    #article-container h6 {
+        padding-left: 30px !important;
+    }
+    
+    #article-container h1::before {
+        font-size: 1.2em !important;
+        width: 26px !important;
+        height: 26px !important;
+    }
+    
+    #article-container h2::before {
+        font-size: 1em !important;
+        width: 22px !important;
+        height: 22px !important;
+    }
+    
+    #article-container h3::before {
+        font-size: 0.9em !important;
+        width: 20px !important;
+        height: 20px !important;
+    }
+    
+    #article-container h4::before,
+    #article-container h5::before,
+    #article-container h6::before {
+        font-size: 0.8em !important;
+        width: 18px !important;
+        height: 18px !important;
+    }
+}
+
+/* ============================================
+   调试模式（如果需要）
+============================================ */
+
+/* 调试：添加边框查看元素位置 */
+/*
+#article-container h1::before {
+    border: 1px solid red !important;
+}
+#article-container h1 {
+    border: 1px dashed blue !important;
+}
+*/
