@@ -29,13 +29,18 @@
     border-left: none !important;
 }
 
-/* 重置所有伪元素样式，确保图标完整显示 */
-#article-container h1::before,
-#article-container h2::before,
-#article-container h3::before,
-#article-container h4::before,
-#article-container h5::before,
-#article-container h6::before {
+/* ============== H1 标题 - 更换为皇冠图标 ============== */
+
+/* H1 标题 - 皇冠图标（\f521）- 金色渐变 */
+#article-container h1::before {
+    content: "\f521" !important; /* 皇冠图标 */
+    
+    /* 金色渐变效果 */
+    background: linear-gradient(135deg, #FFD700, #FFA500) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    color: transparent !important;
+    
     font-family: 'Font Awesome 6 Free' !important;
     font-weight: 900 !important;
     position: absolute !important;
@@ -47,97 +52,12 @@
     line-height: 1 !important;
     vertical-align: middle !important;
     box-sizing: border-box !important;
-}
-
-/* ============== H1 标题 - 更换图标（请选择一种） ============== */
-
-/* 选项1: 皇冠图标（\f521）- 金色渐变 */
-#article-container h1::before {
-    content: "\f521" !important; /* 皇冠图标 */
-    
-    /* 金色渐变效果 */
-    background: linear-gradient(135deg, #FFD700, #FFA500) !important;
-    -webkit-background-clip: text !important;
-    background-clip: text !important;
-    color: transparent !important;
     
     font-size: 1.3em !important;
     min-width: 24px !important;
     width: auto !important;
     height: auto !important;
 }
-
-/* 选项2: 星星图标（\f005）- 金色渐变 */
-/*
-#article-container h1::before {
-    content: "\f005" !important; /* 星星图标 */
-    
-    /* 金色渐变效果 */
-    background: linear-gradient(135deg, #FFD700, #FF6347) !important;
-    -webkit-background-clip: text !important;
-    background-clip: text !important;
-    color: transparent !important;
-    
-    font-size: 1.3em !important;
-    min-width: 24px !important;
-    width: auto !important;
-    height: auto !important;
-}
-*/
-
-/* 选项3: 魔法棒图标（\f72b）- 紫色渐变 */
-/*
-#article-container h1::before {
-    content: "\f72b" !important; /* 魔法棒图标 */
-    
-    /* 紫色渐变效果 */
-    background: linear-gradient(135deg, #9D4EDD, #FF6D6D) !important;
-    -webkit-background-clip: text !important;
-    background-clip: text !important;
-    color: transparent !important;
-    
-    font-size: 1.3em !important;
-    min-width: 24px !important;
-    width: auto !important;
-    height: auto !important;
-}
-*/
-
-/* 选项4: 火箭图标（\f135）- 红色渐变 */
-/*
-#article-container h1::before {
-    content: "\f135" !important; /* 火箭图标 */
-    
-    /* 红色渐变效果 */
-    background: linear-gradient(135deg, #FF416C, #FF4B2B) !important;
-    -webkit-background-clip: text !important;
-    background-clip: text !important;
-    color: transparent !important;
-    
-    font-size: 1.3em !important;
-    min-width: 24px !important;
-    width: auto !important;
-    height: auto !important;
-}
-*/
-
-/* 选项5: 书签图标（\f02e）- 蓝色渐变 */
-/*
-#article-container h1::before {
-    content: "\f02e" !important; /* 书签图标 */
-    
-    /* 蓝色渐变效果 */
-    background: linear-gradient(135deg, #3498db, #2ecc71) !important;
-    -webkit-background-clip: text !important;
-    background-clip: text !important;
-    color: transparent !important;
-    
-    font-size: 1.3em !important;
-    min-width: 24px !important;
-    width: auto !important;
-    height: auto !important;
-}
-*/
 
 /* ============== 其他标题保持不变 ============== */
 
@@ -150,6 +70,18 @@
     -webkit-background-clip: text !important;
     background-clip: text !important;
     color: transparent !important;
+    
+    font-family: 'Font Awesome 6 Free' !important;
+    font-weight: 900 !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    display: inline-block !important;
+    text-align: center !important;
+    line-height: 1 !important;
+    vertical-align: middle !important;
+    box-sizing: border-box !important;
     
     font-size: 1.1em !important;
     min-width: 22px !important;
@@ -167,6 +99,18 @@
     background-clip: text !important;
     color: transparent !important;
     
+    font-family: 'Font Awesome 6 Free' !important;
+    font-weight: 900 !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    display: inline-block !important;
+    text-align: center !important;
+    line-height: 1 !important;
+    vertical-align: middle !important;
+    box-sizing: border-box !important;
+    
     font-size: 1em !important;
     min-width: 20px !important;
     width: auto !important;
@@ -182,6 +126,18 @@
     -webkit-background-clip: text !important;
     background-clip: text !important;
     color: transparent !important;
+    
+    font-family: 'Font Awesome 6 Free' !important;
+    font-weight: 900 !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    display: inline-block !important;
+    text-align: center !important;
+    line-height: 1 !important;
+    vertical-align: middle !important;
+    box-sizing: border-box !important;
     
     font-size: 0.9em !important;
     min-width: 18px !important;
@@ -199,6 +155,18 @@
     background-clip: text !important;
     color: transparent !important;
     
+    font-family: 'Font Awesome 6 Free' !important;
+    font-weight: 900 !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    display: inline-block !important;
+    text-align: center !important;
+    line-height: 1 !important;
+    vertical-align: middle !important;
+    box-sizing: border-box !important;
+    
     font-size: 0.85em !important;
     min-width: 16px !important;
     width: auto !important;
@@ -215,6 +183,18 @@
     background-clip: text !important;
     color: transparent !important;
     
+    font-family: 'Font Awesome 6 Free' !important;
+    font-weight: 900 !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    display: inline-block !important;
+    text-align: center !important;
+    line-height: 1 !important;
+    vertical-align: middle !important;
+    box-sizing: border-box !important;
+    
     font-size: 0.8em !important;
     min-width: 14px !important;
     width: auto !important;
@@ -227,7 +207,7 @@
 
 /* H1 悬停效果 */
 #article-container h1:hover::before {
-    background: linear-gradient(135deg, #FF6347, #FF4500) !important; /* 更亮的金色 */
+    background: linear-gradient(135deg, #FF6347, #FF4500) !important;
     -webkit-background-clip: text !important;
     background-clip: text !important;
     font-size: 1.4em !important;
