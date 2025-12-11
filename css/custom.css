@@ -29,11 +29,29 @@
     border-left: none !important;
 }
 
+/* 重置所有伪元素样式，确保图标完整显示 */
+#article-container h1::before,
+#article-container h2::before,
+#article-container h3::before,
+#article-container h4::before,
+#article-container h5::before,
+#article-container h6::before {
+    font-family: 'Font Awesome 6 Free' !important;
+    font-weight: 900 !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    display: inline-block !important;
+    text-align: center !important;
+    line-height: 1 !important;
+    vertical-align: middle !important;
+    box-sizing: border-box !important;
+}
+
 /* H1 标题 - 风车图标（橙色渐变） */
 #article-container h1::before {
     content: "\f863" !important; /* 风车图标 */
-    font-family: 'Font Awesome 6 Free' !important;
-    font-weight: 900 !important;
     
     /* 橙色渐变效果 */
     background: linear-gradient(135deg, #ff6b6b, #ffa726) !important;
@@ -41,23 +59,15 @@
     background-clip: text !important;
     color: transparent !important;
     
-    position: absolute !important;
-    left: 0 !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    font-size: 1.4em !important;
-    width: 30px !important;
-    height: 30px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
+    font-size: 1.3em !important;
+    min-width: 24px !important;
+    width: auto !important;
+    height: auto !important;
 }
 
 /* H2 标题 - 齿轮图标（蓝色渐变） */
 #article-container h2::before {
     content: "\f013" !important; /* 齿轮图标 */
-    font-family: 'Font Awesome 6 Free' !important;
-    font-weight: 900 !important;
     
     /* 蓝色渐变效果 */
     background: linear-gradient(135deg, #3498db, #2ecc71) !important;
@@ -65,23 +75,15 @@
     background-clip: text !important;
     color: transparent !important;
     
-    position: absolute !important;
-    left: 0 !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    font-size: 1.2em !important;
-    width: 26px !important;
-    height: 26px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
+    font-size: 1.1em !important;
+    min-width: 22px !important;
+    width: auto !important;
+    height: auto !important;
 }
 
 /* H3 标题 - 灯泡图标（黄色渐变） */
 #article-container h3::before {
     content: "\f0eb" !important; /* 灯泡图标 */
-    font-family: 'Font Awesome 6 Free' !important;
-    font-weight: 900 !important;
     
     /* 黄色渐变效果 */
     background: linear-gradient(135deg, #f1c40f, #e74c3c) !important;
@@ -89,23 +91,15 @@
     background-clip: text !important;
     color: transparent !important;
     
-    position: absolute !important;
-    left: 0 !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    font-size: 1.1em !important;
-    width: 24px !important;
-    height: 24px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
+    font-size: 1em !important;
+    min-width: 20px !important;
+    width: auto !important;
+    height: auto !important;
 }
 
 /* H4 标题 - 书签图标（绿色渐变） */
 #article-container h4::before {
     content: "\f02e" !important; /* 书签图标 */
-    font-family: 'Font Awesome 6 Free' !important;
-    font-weight: 900 !important;
     
     /* 绿色渐变效果 */
     background: linear-gradient(135deg, #2ecc71, #3498db) !important;
@@ -113,23 +107,15 @@
     background-clip: text !important;
     color: transparent !important;
     
-    position: absolute !important;
-    left: 0 !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    font-size: 1em !important;
-    width: 22px !important;
-    height: 22px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
+    font-size: 0.9em !important;
+    min-width: 18px !important;
+    width: auto !important;
+    height: auto !important;
 }
 
 /* H5 标题 - 旗子图标（紫色渐变） */
 #article-container h5::before {
     content: "\f024" !important; /* 旗子图标 */
-    font-family: 'Font Awesome 6 Free' !important;
-    font-weight: 900 !important;
     
     /* 紫色渐变效果 */
     background: linear-gradient(135deg, #9b59b6, #e74c3c) !important;
@@ -137,23 +123,15 @@
     background-clip: text !important;
     color: transparent !important;
     
-    position: absolute !important;
-    left: 0 !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    font-size: 0.9em !important;
-    width: 20px !important;
-    height: 20px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
+    font-size: 0.85em !important;
+    min-width: 16px !important;
+    width: auto !important;
+    height: auto !important;
 }
 
 /* H6 标题 - 点图标（灰色渐变） */
 #article-container h6::before {
     content: "\f192" !important; /* 圆点图标 */
-    font-family: 'Font Awesome 6 Free' !important;
-    font-weight: 900 !important;
     
     /* 灰色渐变效果 */
     background: linear-gradient(135deg, #95a5a6, #7f8c8d) !important;
@@ -161,16 +139,10 @@
     background-clip: text !important;
     color: transparent !important;
     
-    position: absolute !important;
-    left: 0 !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
     font-size: 0.8em !important;
-    width: 18px !important;
-    height: 18px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
+    min-width: 14px !important;
+    width: auto !important;
+    height: auto !important;
 }
 
 /* ============================================
@@ -182,8 +154,8 @@
     background: linear-gradient(135deg, #ff0000, #ff5500) !important;
     -webkit-background-clip: text !important;
     background-clip: text !important;
-    font-size: 1.5em !important;
-    transform: translateY(-50%) scale(1.1) !important;
+    font-size: 1.4em !important;
+    transform: translateY(-50%) scale(1.05) !important;
     transition: all 0.3s ease !important;
 }
 
@@ -192,8 +164,8 @@
     background: linear-gradient(135deg, #2980b9, #27ae60) !important;
     -webkit-background-clip: text !important;
     background-clip: text !important;
-    font-size: 1.3em !important;
-    transform: translateY(-50%) scale(1.1) !important;
+    font-size: 1.2em !important;
+    transform: translateY(-50%) scale(1.05) !important;
     transition: all 0.3s ease !important;
 }
 
@@ -202,8 +174,8 @@
     background: linear-gradient(135deg, #f39c12, #d35400) !important;
     -webkit-background-clip: text !important;
     background-clip: text !important;
-    font-size: 1.2em !important;
-    transform: translateY(-50%) scale(1.1) !important;
+    font-size: 1.1em !important;
+    transform: translateY(-50%) scale(1.05) !important;
     transition: all 0.3s ease !important;
 }
 
@@ -212,8 +184,8 @@
     background: linear-gradient(135deg, #1abc9c, #16a085) !important;
     -webkit-background-clip: text !important;
     background-clip: text !important;
-    font-size: 1.1em !important;
-    transform: translateY(-50%) scale(1.1) !important;
+    font-size: 1em !important;
+    transform: translateY(-50%) scale(1.05) !important;
     transition: all 0.3s ease !important;
 }
 
@@ -222,8 +194,8 @@
     background: linear-gradient(135deg, #8e44ad, #c0392b) !important;
     -webkit-background-clip: text !important;
     background-clip: text !important;
-    font-size: 1em !important;
-    transform: translateY(-50%) scale(1.1) !important;
+    font-size: 0.95em !important;
+    transform: translateY(-50%) scale(1.05) !important;
     transition: all 0.3s ease !important;
 }
 
@@ -232,8 +204,8 @@
     background: linear-gradient(135deg, #7f8c8d, #34495e) !important;
     -webkit-background-clip: text !important;
     background-clip: text !important;
-    font-size: 0.9em !important;
-    transform: translateY(-50%) scale(1.1) !important;
+    font-size: 0.85em !important;
+    transform: translateY(-50%) scale(1.05) !important;
     transition: all 0.3s ease !important;
 }
 
@@ -275,33 +247,29 @@
     #article-container h4,
     #article-container h5,
     #article-container h6 {
-        padding-left: 30px !important;
+        padding-left: 28px !important;
     }
     
     #article-container h1::before {
         font-size: 1.2em !important;
-        width: 26px !important;
-        height: 26px !important;
+        min-width: 22px !important;
     }
     
     #article-container h2::before {
         font-size: 1em !important;
-        width: 22px !important;
-        height: 22px !important;
+        min-width: 20px !important;
     }
     
     #article-container h3::before {
         font-size: 0.9em !important;
-        width: 20px !important;
-        height: 20px !important;
+        min-width: 18px !important;
     }
     
     #article-container h4::before,
     #article-container h5::before,
     #article-container h6::before {
         font-size: 0.8em !important;
-        width: 18px !important;
-        height: 18px !important;
+        min-width: 16px !important;
     }
 }
 
@@ -333,5 +301,21 @@
 
 #article-container h6::before {
     color: #95a5a6 !important;
+}
+*/
+
+/* ============================================
+   调试辅助样式（如果图标仍显示不全，可以取消注释）
+============================================ */
+
+/*
+#article-container h1::before,
+#article-container h2::before,
+#article-container h3::before,
+#article-container h4::before,
+#article-container h5::before,
+#article-container h6::before {
+    background-color: rgba(255, 0, 0, 0.1) !important; /* 红色半透明背景用于调试位置 */
+    border: 1px dotted rgba(0, 0, 255, 0.3) !important; /* 蓝色虚线边框用于调试大小 */
 }
 */
