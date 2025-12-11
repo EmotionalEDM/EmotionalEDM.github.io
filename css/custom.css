@@ -52,7 +52,7 @@
 
 /* ============== H1 标题 - 皇冠图标（仅修改这里） ============== */
 #article-container h1::before {
-    content: "\f005" !important; /* 皇冠图标（原风车图标 \f863） */
+    content: "\f521" !important; /* 皇冠图标（原风车图标 \f863） */
     
     /* 金色渐变效果 */
     background: linear-gradient(135deg, #FFD700, #FFA500) !important;
