@@ -1,25 +1,111 @@
 /* 文章页H1-H6图标样式效果 */
-h1::before, h2::before, h3::before, h4::before, h5::before, h6::before {
-    -webkit-animation: ccc 1.6s linear infinite ;
-    animation: ccc 1.6s linear infinite ;
+#article-container h1::before, 
+#article-container h2::before, 
+#article-container h3::before, 
+#article-container h4::before, 
+#article-container h5::before, 
+#article-container h6::before {
+    /* 使用 Fort Awesome 字体 */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;  /* Solid 图标使用 900 */
+    margin-right: 10px;
+    
+    /* 旋转动画 */
+    -webkit-animation: ccc 1.6s linear infinite;
+    animation: ccc 1.6s linear infinite;
+    
+    /* 默认图标大小 */
+    font-size: 1em;
+    display: inline-block;
 }
+
+/* H1 标题 - 风车图标 */
+#article-container h1::before {
+    content: "\f863"; /* 风车图标 */
+    color: #ff7849;   /* 橙色 */
+}
+
+/* H2 标题 - 其他图标（示例） */
+#article-container h2::before {
+    content: "\f0a4"; /* 前进箭头 */
+    color: #3498db;   /* 蓝色 */
+    animation-duration: 2s; /* 调整动画速度 */
+}
+
+/* H3 标题 */
+#article-container h3::before {
+    content: "\f0c8"; /* 方块图标 */
+    color: #2ecc71;   /* 绿色 */
+}
+
+/* H4 标题 */
+#article-container h4::before {
+    content: "\f111"; /* 圆点图标 */
+    color: #9b59b6;   /* 紫色 */
+}
+
+/* H5 标题 */
+#article-container h5::before {
+    content: "\f10c"; /* 空心圆 */
+    color: #e74c3c;   /* 红色 */
+}
+
+/* H6 标题 */
+#article-container h6::before {
+    content: "\f192"; /* 实心圆点 */
+    color: #95a5a6;   /* 灰色 */
+}
+
+/* 旋转动画定义 */
 @-webkit-keyframes ccc {
     0% {
         -webkit-transform: rotate(0deg);
-        transform: rotate(0deg)
+        transform: rotate(0deg);
     }
-    to {
-        -webkit-transform: rotate(-1turn);
-        transform: rotate(-1turn)
+    100% {
+        -webkit-transform: rotate(-360deg);
+        transform: rotate(-360deg);
     }
 }
+
 @keyframes ccc {
     0% {
         -webkit-transform: rotate(0deg);
-        transform: rotate(0deg)
+        transform: rotate(0deg);
     }
-    to {
-        -webkit-transform: rotate(-1turn);
-        transform: rotate(-1turn)
+    100% {
+        -webkit-transform: rotate(-360deg);
+        transform: rotate(-360deg);
     }
+}
+
+/* 可选：调整图标位置 */
+#article-container h1,
+#article-container h2,
+#article-container h3,
+#article-container h4,
+#article-container h5,
+#article-container h6 {
+    display: flex;
+    align-items: center;
+}
+
+#article-container h1::before,
+#article-container h2::before,
+#article-container h3::before,
+#article-container h4::before,
+#article-container h5::before,
+#article-container h6::before {
+    margin-right: 12px;
+}
+
+/* 可选：鼠标悬停时停止动画 */
+#article-container h1:hover::before,
+#article-container h2:hover::before,
+#article-container h3:hover::before,
+#article-container h4:hover::before,
+#article-container h5:hover::before,
+#article-container h6:hover::before {
+    -webkit-animation-play-state: paused;
+    animation-play-state: paused;
 }
