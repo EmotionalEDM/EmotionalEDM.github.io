@@ -1,13 +1,46 @@
 /* ============================================
-   修复动画问题 - 简化版
+   FontAwesome 图标字体支持
 ============================================ */
 
-/* H1 标题 - 风车图标（修复动画） */
+/* 确保 FontAwesome 图标正确显示 */
+@font-face {
+    font-family: 'Font Awesome 6 Free';
+    font-style: normal;
+    font-weight: 900;
+    font-display: block;
+    src: url("https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2") format("woff2"),
+         url("https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/webfonts/fa-solid-900.ttf") format("truetype");
+}
+
+/* ============================================
+   文章标题 H1-H6 图标样式（带渐变色）
+============================================ */
+
+/* 为所有文章标题添加图标容器 */
+#article-container h1,
+#article-container h2,
+#article-container h3,
+#article-container h4,
+#article-container h5,
+#article-container h6 {
+    position: relative;
+    padding-left: 35px !important;
+    margin-left: 0 !important;
+    border-left: none !important;
+}
+
+/* H1 标题 - 风车图标（橙色渐变） */
 #article-container h1::before {
-    content: "\f863" !important;
+    content: "\f863" !important; /* 风车图标 */
     font-family: 'Font Awesome 6 Free' !important;
     font-weight: 900 !important;
-    color: #ff7849 !important;
+    
+    /* 橙色渐变效果 */
+    background: linear-gradient(135deg, #ff6b6b, #ffa726) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    color: transparent !important;
+    
     position: absolute !important;
     left: 0 !important;
     top: 50% !important;
@@ -18,107 +51,287 @@
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    
-    /* 修复动画 - 使用独立的动画类 */
-    animation: spin 2s linear infinite !important;
-    -webkit-animation: spin 2s linear infinite !important;
 }
 
-/* H2 标题 - 齿轮图标（修复动画） */
+/* H2 标题 - 齿轮图标（蓝色渐变） */
 #article-container h2::before {
-    content: "\f013" !important;
+    content: "\f013" !important; /* 齿轮图标 */
     font-family: 'Font Awesome 6 Free' !important;
     font-weight: 900 !important;
-    color: #3498db !important;
+    
+    /* 蓝色渐变效果 */
+    background: linear-gradient(135deg, #3498db, #2ecc71) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    color: transparent !important;
+    
     position: absolute !important;
     left: 0 !important;
     top: 50% !important;
     transform: translateY(-50%) !important;
     font-size: 1.2em !important;
-    
-    /* 修复动画 */
-    animation: spin-slow 3s linear infinite !important;
-    -webkit-animation: spin-slow 3s linear infinite !important;
+    width: 26px !important;
+    height: 26px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
 }
 
-/* H3 标题 - 灯泡图标（修复动画） */
+/* H3 标题 - 灯泡图标（黄色渐变） */
 #article-container h3::before {
-    content: "\f0eb" !important;
+    content: "\f0eb" !important; /* 灯泡图标 */
     font-family: 'Font Awesome 6 Free' !important;
     font-weight: 900 !important;
-    color: #f1c40f !important;
+    
+    /* 黄色渐变效果 */
+    background: linear-gradient(135deg, #f1c40f, #e74c3c) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    color: transparent !important;
+    
     position: absolute !important;
     left: 0 !important;
     top: 50% !important;
     transform: translateY(-50%) !important;
     font-size: 1.1em !important;
+    width: 24px !important;
+    height: 24px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* H4 标题 - 书签图标（绿色渐变） */
+#article-container h4::before {
+    content: "\f02e" !important; /* 书签图标 */
+    font-family: 'Font Awesome 6 Free' !important;
+    font-weight: 900 !important;
     
-    /* 修复动画 - 简化闪烁效果 */
-    animation: blink 2s ease-in-out infinite !important;
-    -webkit-animation: blink 2s ease-in-out infinite !important;
+    /* 绿色渐变效果 */
+    background: linear-gradient(135deg, #2ecc71, #3498db) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    color: transparent !important;
+    
+    position: absolute !important;
+    left: 0 !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    font-size: 1em !important;
+    width: 22px !important;
+    height: 22px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* H5 标题 - 旗子图标（紫色渐变） */
+#article-container h5::before {
+    content: "\f024" !important; /* 旗子图标 */
+    font-family: 'Font Awesome 6 Free' !important;
+    font-weight: 900 !important;
+    
+    /* 紫色渐变效果 */
+    background: linear-gradient(135deg, #9b59b6, #e74c3c) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    color: transparent !important;
+    
+    position: absolute !important;
+    left: 0 !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    font-size: 0.9em !important;
+    width: 20px !important;
+    height: 20px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* H6 标题 - 点图标（灰色渐变） */
+#article-container h6::before {
+    content: "\f192" !important; /* 圆点图标 */
+    font-family: 'Font Awesome 6 Free' !important;
+    font-weight: 900 !important;
+    
+    /* 灰色渐变效果 */
+    background: linear-gradient(135deg, #95a5a6, #7f8c8d) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    color: transparent !important;
+    
+    position: absolute !important;
+    left: 0 !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    font-size: 0.8em !important;
+    width: 18px !important;
+    height: 18px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
 }
 
 /* ============================================
-   修复动画定义（简化版本）
+   鼠标悬停效果（渐变变色）
 ============================================ */
 
-/* 旋转动画 */
-@keyframes spin {
-    from {
-        transform: translateY(-50%) rotate(0deg);
+/* H1 悬停 - 红色渐变 */
+#article-container h1:hover::before {
+    background: linear-gradient(135deg, #ff0000, #ff5500) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    font-size: 1.5em !important;
+    transform: translateY(-50%) scale(1.1) !important;
+    transition: all 0.3s ease !important;
+}
+
+/* H2 悬停 - 深蓝色渐变 */
+#article-container h2:hover::before {
+    background: linear-gradient(135deg, #2980b9, #27ae60) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    font-size: 1.3em !important;
+    transform: translateY(-50%) scale(1.1) !important;
+    transition: all 0.3s ease !important;
+}
+
+/* H3 悬停 - 金色渐变 */
+#article-container h3:hover::before {
+    background: linear-gradient(135deg, #f39c12, #d35400) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    font-size: 1.2em !important;
+    transform: translateY(-50%) scale(1.1) !important;
+    transition: all 0.3s ease !important;
+}
+
+/* H4 悬停 - 青绿色渐变 */
+#article-container h4:hover::before {
+    background: linear-gradient(135deg, #1abc9c, #16a085) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    font-size: 1.1em !important;
+    transform: translateY(-50%) scale(1.1) !important;
+    transition: all 0.3s ease !important;
+}
+
+/* H5 悬停 - 深紫色渐变 */
+#article-container h5:hover::before {
+    background: linear-gradient(135deg, #8e44ad, #c0392b) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    font-size: 1em !important;
+    transform: translateY(-50%) scale(1.1) !important;
+    transition: all 0.3s ease !important;
+}
+
+/* H6 悬停 - 深灰色渐变 */
+#article-container h6:hover::before {
+    background: linear-gradient(135deg, #7f8c8d, #34495e) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    font-size: 0.9em !important;
+    transform: translateY(-50%) scale(1.1) !important;
+    transition: all 0.3s ease !important;
+}
+
+/* ============================================
+   平滑过渡效果
+============================================ */
+
+/* 为所有图标添加平滑过渡 */
+#article-container h1::before,
+#article-container h2::before,
+#article-container h3::before,
+#article-container h4::before,
+#article-container h5::before,
+#article-container h6::before {
+    transition: all 0.3s ease !important;
+}
+
+/* ============================================
+   兼容性修复
+============================================ */
+
+/* 确保链接图标不干扰 */
+#article-container h1 .headerlink,
+#article-container h2 .headerlink,
+#article-container h3 .headerlink,
+#article-container h4 .headerlink,
+#article-container h5 .headerlink,
+#article-container h6 .headerlink {
+    position: relative !important;
+    z-index: 10 !important;
+    margin-left: 5px !important;
+}
+
+/* 修复移动端显示 */
+@media screen and (max-width: 768px) {
+    #article-container h1,
+    #article-container h2,
+    #article-container h3,
+    #article-container h4,
+    #article-container h5,
+    #article-container h6 {
+        padding-left: 30px !important;
     }
-    to {
-        transform: translateY(-50%) rotate(360deg);
+    
+    #article-container h1::before {
+        font-size: 1.2em !important;
+        width: 26px !important;
+        height: 26px !important;
+    }
+    
+    #article-container h2::before {
+        font-size: 1em !important;
+        width: 22px !important;
+        height: 22px !important;
+    }
+    
+    #article-container h3::before {
+        font-size: 0.9em !important;
+        width: 20px !important;
+        height: 20px !important;
+    }
+    
+    #article-container h4::before,
+    #article-container h5::before,
+    #article-container h6::before {
+        font-size: 0.8em !important;
+        width: 18px !important;
+        height: 18px !important;
     }
 }
 
-@-webkit-keyframes spin {
-    from {
-        -webkit-transform: translateY(-50%) rotate(0deg);
-    }
-    to {
-        -webkit-transform: translateY(-50%) rotate(360deg);
-    }
+/* ============================================
+   备用方案：如果渐变效果不兼容，使用纯色
+============================================ */
+
+/* 如果浏览器不支持背景剪裁到文字，可以启用下面的代码作为备用 */
+/*
+#article-container h1::before {
+    color: #ff7849 !important;
 }
 
-/* 慢速旋转 */
-@keyframes spin-slow {
-    from {
-        transform: translateY(-50%) rotate(0deg);
-    }
-    to {
-        transform: translateY(-50%) rotate(360deg);
-    }
+#article-container h2::before {
+    color: #3498db !important;
 }
 
-@-webkit-keyframes spin-slow {
-    from {
-        -webkit-transform: translateY(-50%) rotate(0deg);
-    }
-    to {
-        -webkit-transform: translateY(-50%) rotate(360deg);
-    }
+#article-container h3::before {
+    color: #f1c40f !important;
 }
 
-/* 闪烁动画 */
-@keyframes blink {
-    0%, 100% {
-        opacity: 1;
-        filter: brightness(1) drop-shadow(0 0 3px rgba(241, 196, 15, 0.5));
-    }
-    50% {
-        opacity: 0.8;
-        filter: brightness(1.5) drop-shadow(0 0 6px rgba(241, 196, 15, 0.8));
-    }
+#article-container h4::before {
+    color: #2ecc71 !important;
 }
 
-@-webkit-keyframes blink {
-    0%, 100% {
-        opacity: 1;
-        -webkit-filter: brightness(1) drop-shadow(0 0 3px rgba(241, 196, 15, 0.5));
-    }
-    50% {
-        opacity: 0.8;
-        -webkit-filter: brightness(1.5) drop-shadow(0 0 6px rgba(241, 196, 15, 0.8));
-    }
+#article-container h5::before {
+    color: #9b59b6 !important;
 }
+
+#article-container h6::before {
+    color: #95a5a6 !important;
+}
+*/
