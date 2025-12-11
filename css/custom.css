@@ -16,6 +16,27 @@
    文章标题 H1-H6 图标样式（带渐变色）
 ============================================ */
 
+/* 通用样式：所有标题图标的共同属性 */
+#article-container h1::before,
+#article-container h2::before,
+#article-container h3::before,
+#article-container h4::before,
+#article-container h5::before,
+#article-container h6::before {
+    font-family: 'Font Awesome 6 Free' !important;
+    font-weight: 900 !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    display: inline-block !important;
+    text-align: center !important;
+    line-height: 1 !important;
+    vertical-align: middle !important;
+    box-sizing: border-box !important;
+    transition: all 0.3s ease !important;
+}
+
 /* 为所有文章标题添加图标容器 */
 #article-container h1,
 #article-container h2,
@@ -23,17 +44,15 @@
 #article-container h4,
 #article-container h5,
 #article-container h6 {
-    position: relative;
+    position: relative !important;
     padding-left: 35px !important;
     margin-left: 0 !important;
     border-left: none !important;
 }
 
-/* ============== H1 标题 - 更换为皇冠图标 ============== */
-
-/* H1 标题 - 皇冠图标（\f521）- 金色渐变 */
+/* ============== H1 标题 - 皇冠图标（仅修改这里） ============== */
 #article-container h1::before {
-    content: "\f521" !important; /* 皇冠图标 */
+    content: "\f521" !important; /* 皇冠图标（原风车图标 \f863） */
     
     /* 金色渐变效果 */
     background: linear-gradient(135deg, #FFD700, #FFA500) !important;
@@ -41,48 +60,21 @@
     background-clip: text !important;
     color: transparent !important;
     
-    font-family: 'Font Awesome 6 Free' !important;
-    font-weight: 900 !important;
-    position: absolute !important;
-    left: 0 !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    display: inline-block !important;
-    text-align: center !important;
-    line-height: 1 !important;
-    vertical-align: middle !important;
-    box-sizing: border-box !important;
-    
     font-size: 1.3em !important;
     min-width: 24px !important;
     width: auto !important;
     height: auto !important;
 }
 
-/* ============== 其他标题保持不变 ============== */
+/* ============== 其他标题保持原有配置不变 ============== */
 
 /* H2 标题 - 齿轮图标（蓝色渐变） */
 #article-container h2::before {
     content: "\f013" !important; /* 齿轮图标 */
-    
-    /* 蓝色渐变效果 */
     background: linear-gradient(135deg, #3498db, #2ecc71) !important;
     -webkit-background-clip: text !important;
     background-clip: text !important;
     color: transparent !important;
-    
-    font-family: 'Font Awesome 6 Free' !important;
-    font-weight: 900 !important;
-    position: absolute !important;
-    left: 0 !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    display: inline-block !important;
-    text-align: center !important;
-    line-height: 1 !important;
-    vertical-align: middle !important;
-    box-sizing: border-box !important;
-    
     font-size: 1.1em !important;
     min-width: 22px !important;
     width: auto !important;
@@ -92,25 +84,10 @@
 /* H3 标题 - 灯泡图标（黄色渐变） */
 #article-container h3::before {
     content: "\f0eb" !important; /* 灯泡图标 */
-    
-    /* 黄色渐变效果 */
     background: linear-gradient(135deg, #f1c40f, #e74c3c) !important;
     -webkit-background-clip: text !important;
     background-clip: text !important;
     color: transparent !important;
-    
-    font-family: 'Font Awesome 6 Free' !important;
-    font-weight: 900 !important;
-    position: absolute !important;
-    left: 0 !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    display: inline-block !important;
-    text-align: center !important;
-    line-height: 1 !important;
-    vertical-align: middle !important;
-    box-sizing: border-box !important;
-    
     font-size: 1em !important;
     min-width: 20px !important;
     width: auto !important;
@@ -120,25 +97,10 @@
 /* H4 标题 - 书签图标（绿色渐变） */
 #article-container h4::before {
     content: "\f02e" !important; /* 书签图标 */
-    
-    /* 绿色渐变效果 */
     background: linear-gradient(135deg, #2ecc71, #3498db) !important;
     -webkit-background-clip: text !important;
     background-clip: text !important;
     color: transparent !important;
-    
-    font-family: 'Font Awesome 6 Free' !important;
-    font-weight: 900 !important;
-    position: absolute !important;
-    left: 0 !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    display: inline-block !important;
-    text-align: center !important;
-    line-height: 1 !important;
-    vertical-align: middle !important;
-    box-sizing: border-box !important;
-    
     font-size: 0.9em !important;
     min-width: 18px !important;
     width: auto !important;
@@ -148,25 +110,10 @@
 /* H5 标题 - 旗子图标（紫色渐变） */
 #article-container h5::before {
     content: "\f024" !important; /* 旗子图标 */
-    
-    /* 紫色渐变效果 */
     background: linear-gradient(135deg, #9b59b6, #e74c3c) !important;
     -webkit-background-clip: text !important;
     background-clip: text !important;
     color: transparent !important;
-    
-    font-family: 'Font Awesome 6 Free' !important;
-    font-weight: 900 !important;
-    position: absolute !important;
-    left: 0 !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    display: inline-block !important;
-    text-align: center !important;
-    line-height: 1 !important;
-    vertical-align: middle !important;
-    box-sizing: border-box !important;
-    
     font-size: 0.85em !important;
     min-width: 16px !important;
     width: auto !important;
@@ -176,25 +123,10 @@
 /* H6 标题 - 点图标（灰色渐变） */
 #article-container h6::before {
     content: "\f192" !important; /* 圆点图标 */
-    
-    /* 灰色渐变效果 */
     background: linear-gradient(135deg, #95a5a6, #7f8c8d) !important;
     -webkit-background-clip: text !important;
     background-clip: text !important;
     color: transparent !important;
-    
-    font-family: 'Font Awesome 6 Free' !important;
-    font-weight: 900 !important;
-    position: absolute !important;
-    left: 0 !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    display: inline-block !important;
-    text-align: center !important;
-    line-height: 1 !important;
-    vertical-align: middle !important;
-    box-sizing: border-box !important;
-    
     font-size: 0.8em !important;
     min-width: 14px !important;
     width: auto !important;
@@ -212,7 +144,6 @@
     background-clip: text !important;
     font-size: 1.4em !important;
     transform: translateY(-50%) scale(1.05) !important;
-    transition: all 0.3s ease !important;
 }
 
 /* H2 悬停 - 深蓝色渐变 */
@@ -222,7 +153,6 @@
     background-clip: text !important;
     font-size: 1.2em !important;
     transform: translateY(-50%) scale(1.05) !important;
-    transition: all 0.3s ease !important;
 }
 
 /* H3 悬停 - 金色渐变 */
@@ -232,7 +162,6 @@
     background-clip: text !important;
     font-size: 1.1em !important;
     transform: translateY(-50%) scale(1.05) !important;
-    transition: all 0.3s ease !important;
 }
 
 /* H4 悬停 - 青绿色渐变 */
@@ -242,7 +171,6 @@
     background-clip: text !important;
     font-size: 1em !important;
     transform: translateY(-50%) scale(1.05) !important;
-    transition: all 0.3s ease !important;
 }
 
 /* H5 悬停 - 深紫色渐变 */
@@ -252,7 +180,6 @@
     background-clip: text !important;
     font-size: 0.95em !important;
     transform: translateY(-50%) scale(1.05) !important;
-    transition: all 0.3s ease !important;
 }
 
 /* H6 悬停 - 深灰色渐变 */
@@ -262,21 +189,6 @@
     background-clip: text !important;
     font-size: 0.85em !important;
     transform: translateY(-50%) scale(1.05) !important;
-    transition: all 0.3s ease !important;
-}
-
-/* ============================================
-   平滑过渡效果
-============================================ */
-
-/* 为所有图标添加平滑过渡 */
-#article-container h1::before,
-#article-container h2::before,
-#article-container h3::before,
-#article-container h4::before,
-#article-container h5::before,
-#article-container h6::before {
-    transition: all 0.3s ease !important;
 }
 
 /* ============================================
@@ -328,34 +240,3 @@
         min-width: 16px !important;
     }
 }
-
-/* ============================================
-   备用方案：如果渐变效果不兼容，使用纯色
-============================================ */
-
-/* 如果浏览器不支持背景剪裁到文字，可以启用下面的代码作为备用 */
-/*
-#article-container h1::before {
-    color: #FFD700 !important;
-}
-
-#article-container h2::before {
-    color: #3498db !important;
-}
-
-#article-container h3::before {
-    color: #f1c40f !important;
-}
-
-#article-container h4::before {
-    color: #2ecc71 !important;
-}
-
-#article-container h5::before {
-    color: #9b59b6 !important;
-}
-
-#article-container h6::before {
-    color: #95a5a6 !important;
-}
-*/
