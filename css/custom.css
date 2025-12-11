@@ -49,12 +49,14 @@
     box-sizing: border-box !important;
 }
 
-/* H1 标题 - 风车图标（橙色渐变） */
+/* ============== H1 标题 - 更换图标（请选择一种） ============== */
+
+/* 选项1: 皇冠图标（\f521）- 金色渐变 */
 #article-container h1::before {
-    content: "\f863" !important; /* 风车图标 */
+    content: "\f521" !important; /* 皇冠图标 */
     
-    /* 橙色渐变效果 */
-    background: linear-gradient(135deg, #ff6b6b, #ffa726) !important;
+    /* 金色渐变效果 */
+    background: linear-gradient(135deg, #FFD700, #FFA500) !important;
     -webkit-background-clip: text !important;
     background-clip: text !important;
     color: transparent !important;
@@ -64,6 +66,80 @@
     width: auto !important;
     height: auto !important;
 }
+
+/* 选项2: 星星图标（\f005）- 金色渐变 */
+/*
+#article-container h1::before {
+    content: "\f005" !important; /* 星星图标 */
+    
+    /* 金色渐变效果 */
+    background: linear-gradient(135deg, #FFD700, #FF6347) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    color: transparent !important;
+    
+    font-size: 1.3em !important;
+    min-width: 24px !important;
+    width: auto !important;
+    height: auto !important;
+}
+*/
+
+/* 选项3: 魔法棒图标（\f72b）- 紫色渐变 */
+/*
+#article-container h1::before {
+    content: "\f72b" !important; /* 魔法棒图标 */
+    
+    /* 紫色渐变效果 */
+    background: linear-gradient(135deg, #9D4EDD, #FF6D6D) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    color: transparent !important;
+    
+    font-size: 1.3em !important;
+    min-width: 24px !important;
+    width: auto !important;
+    height: auto !important;
+}
+*/
+
+/* 选项4: 火箭图标（\f135）- 红色渐变 */
+/*
+#article-container h1::before {
+    content: "\f135" !important; /* 火箭图标 */
+    
+    /* 红色渐变效果 */
+    background: linear-gradient(135deg, #FF416C, #FF4B2B) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    color: transparent !important;
+    
+    font-size: 1.3em !important;
+    min-width: 24px !important;
+    width: auto !important;
+    height: auto !important;
+}
+*/
+
+/* 选项5: 书签图标（\f02e）- 蓝色渐变 */
+/*
+#article-container h1::before {
+    content: "\f02e" !important; /* 书签图标 */
+    
+    /* 蓝色渐变效果 */
+    background: linear-gradient(135deg, #3498db, #2ecc71) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    color: transparent !important;
+    
+    font-size: 1.3em !important;
+    min-width: 24px !important;
+    width: auto !important;
+    height: auto !important;
+}
+*/
+
+/* ============== 其他标题保持不变 ============== */
 
 /* H2 标题 - 齿轮图标（蓝色渐变） */
 #article-container h2::before {
@@ -149,9 +225,9 @@
    鼠标悬停效果（渐变变色）
 ============================================ */
 
-/* H1 悬停 - 红色渐变 */
+/* H1 悬停效果 */
 #article-container h1:hover::before {
-    background: linear-gradient(135deg, #ff0000, #ff5500) !important;
+    background: linear-gradient(135deg, #FF6347, #FF4500) !important; /* 更亮的金色 */
     -webkit-background-clip: text !important;
     background-clip: text !important;
     font-size: 1.4em !important;
@@ -280,7 +356,7 @@
 /* 如果浏览器不支持背景剪裁到文字，可以启用下面的代码作为备用 */
 /*
 #article-container h1::before {
-    color: #ff7849 !important;
+    color: #FFD700 !important;
 }
 
 #article-container h2::before {
@@ -301,21 +377,5 @@
 
 #article-container h6::before {
     color: #95a5a6 !important;
-}
-*/
-
-/* ============================================
-   调试辅助样式（如果图标仍显示不全，可以取消注释）
-============================================ */
-
-/*
-#article-container h1::before,
-#article-container h2::before,
-#article-container h3::before,
-#article-container h4::before,
-#article-container h5::before,
-#article-container h6::before {
-    background-color: rgba(255, 0, 0, 0.1) !important; /* 红色半透明背景用于调试位置 */
-    border: 1px dotted rgba(0, 0, 255, 0.3) !important; /* 蓝色虚线边框用于调试大小 */
 }
 */
