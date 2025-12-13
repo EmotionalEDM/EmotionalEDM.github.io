@@ -192,23 +192,204 @@
 }
 
 /* ============================================
-   兼容性修复
+   代码块美化功能
 ============================================ */
 
-/* 确保链接图标不干扰 */
-#article-container h1 .headerlink,
-#article-container h2 .headerlink,
-#article-container h3 .headerlink,
-#article-container h4 .headerlink,
-#article-container h5 .headerlink,
-#article-container h6 .headerlink {
+/* 代码块整体容器 */
+#article-container pre {
     position: relative !important;
-    z-index: 10 !important;
-    margin-left: 5px !important;
+    border-radius: 12px !important;
+    border: 1px solid rgba(120, 120, 120, 0.2) !important;
+    background: linear-gradient(145deg, #2d3748, #1a202c) !important;
+    box-shadow: 
+        0 4px 20px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+        0 1px 0 rgba(255, 255, 255, 0.1) inset !important;
+    margin: 1.5em 0 !important;
+    overflow: hidden !important;
+    transition: all 0.3s ease !important;
+    padding: 0 !important;
 }
 
-/* 修复移动端显示 */
+/* 代码块悬停效果 */
+#article-container pre:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 
+        0 8px 30px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(255, 255, 255, 0.1) inset,
+        0 1px 0 rgba(255, 255, 255, 0.15) inset !important;
+}
+
+/* 代码块内部代码 */
+#article-container pre code {
+    display: block !important;
+    padding: 1.5em !important;
+    font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Consolas', 'Courier New', monospace !important;
+    font-size: 0.9em !important;
+    line-height: 1.6 !important;
+    color: #e2e8f0 !important;
+    overflow-x: auto !important;
+    scrollbar-width: thin !important;
+    scrollbar-color: #4a5568 #2d3748 !important;
+    background: transparent !important;
+    border-radius: 0 0 12px 12px !important;
+}
+
+/* 代码块滚动条 */
+#article-container pre code::-webkit-scrollbar {
+    height: 8px !important;
+}
+
+#article-container pre code::-webkit-scrollbar-track {
+    background: #2d3748 !important;
+    border-radius: 4px !important;
+}
+
+#article-container pre code::-webkit-scrollbar-thumb {
+    background: #4a5568 !important;
+    border-radius: 4px !important;
+}
+
+#article-container pre code::-webkit-scrollbar-thumb:hover {
+    background: #718096 !important;
+}
+
+/* 代码块顶部栏 */
+#article-container pre::before {
+    content: '' !important;
+    display: block !important;
+    height: 36px !important;
+    background: linear-gradient(90deg, #2d3748, #1a202c) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+    border-radius: 12px 12px 0 0 !important;
+    position: relative !important;
+}
+
+/* 代码块顶部栏的装饰性圆点 */
+#article-container pre::after {
+    content: '' !important;
+    position: absolute !important;
+    top: 12px !important;
+    left: 16px !important;
+    width: 12px !important;
+    height: 12px !important;
+    border-radius: 50% !important;
+    background: #fc625d !important;
+    box-shadow: 20px 0 0 #fdbc40, 40px 0 0 #35cd4b !important;
+    z-index: 1 !important;
+}
+
+/* 语言标签 */
+#article-container pre[class*="language-"]::before {
+    content: attr(class) !important;
+    position: absolute !important;
+    top: 8px !important;
+    right: 16px !important;
+    font-family: 'SF Mono', Monaco, monospace !important;
+    font-size: 0.75em !important;
+    color: #a0aec0 !important;
+    background: rgba(0, 0, 0, 0.3) !important;
+    padding: 4px 12px !important;
+    border-radius: 20px !important;
+    z-index: 2 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+/* 行号样式 */
+#article-container pre .line-numbers,
+#article-container pre .line-numbers-rows {
+    border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
+    padding-right: 1em !important;
+    margin-right: 1em !important;
+    color: #718096 !important;
+    text-align: right !important;
+    user-select: none !important;
+}
+
+/* 语法高亮颜色 */
+#article-container code .keyword,
+#article-container pre .keyword {
+    color: #ff79c6 !important;
+    font-weight: bold !important;
+}
+
+#article-container code .function,
+#article-container pre .function {
+    color: #50fa7b !important;
+}
+
+#article-container code .string,
+#article-container pre .string {
+    color: #f1fa8c !important;
+}
+
+#article-container code .comment,
+#article-container pre .comment {
+    color: #6272a4 !important;
+    font-style: italic !important;
+}
+
+#article-container code .number,
+#article-container pre .number {
+    color: #bd93f9 !important;
+}
+
+#article-container code .class-name,
+#article-container pre .class-name {
+    color: #8be9fd !important;
+}
+
+#article-container code .operator,
+#article-container pre .operator {
+    color: #ff79c6 !important;
+}
+
+#article-container code .punctuation,
+#article-container pre .punctuation {
+    color: #f8f8f2 !important;
+}
+
+/* 内联代码 */
+#article-container :not(pre) > code {
+    background: linear-gradient(135deg, rgba(45, 55, 72, 0.2), rgba(26, 32, 44, 0.2)) !important;
+    color: #ff79c6 !important;
+    padding: 0.2em 0.4em !important;
+    border-radius: 6px !important;
+    font-size: 0.9em !important;
+    font-family: 'SF Mono', Monaco, monospace !important;
+    border: 1px solid rgba(255, 121, 198, 0.2) !important;
+    transition: all 0.2s ease !important;
+}
+
+#article-container :not(pre) > code:hover {
+    background: linear-gradient(135deg, rgba(45, 55, 72, 0.3), rgba(26, 32, 44, 0.3)) !important;
+    border-color: rgba(255, 121, 198, 0.4) !important;
+    transform: translateY(-1px) !important;
+}
+
+/* 复制代码按钮 */
+#article-container pre:hover .copy-code-button {
+    opacity: 1 !important;
+}
+
+/* 代码块中的链接 */
+#article-container pre a {
+    color: #8be9fd !important;
+    text-decoration: underline dotted !important;
+}
+
+#article-container pre a:hover {
+    color: #50fa7b !important;
+    text-decoration: underline solid !important;
+}
+
+/* ============================================
+   移动端适配
+============================================ */
+
 @media screen and (max-width: 768px) {
+    /* 标题调整 */
     #article-container h1,
     #article-container h2,
     #article-container h3,
@@ -239,4 +420,89 @@
         font-size: 0.8em !important;
         min-width: 16px !important;
     }
+    
+    /* 代码块移动端调整 */
+    #article-container pre {
+        border-radius: 10px !important;
+        margin: 1em 0 !important;
+    }
+    
+    #article-container pre code {
+        padding: 1.2em !important;
+        font-size: 0.85em !important;
+        line-height: 1.5 !important;
+    }
+    
+    #article-container pre::before {
+        height: 32px !important;
+    }
+    
+    #article-container pre::after {
+        top: 10px !important;
+        left: 14px !important;
+        width: 10px !important;
+        height: 10px !important;
+        box-shadow: 18px 0 0 #fdbc40, 36px 0 0 #35cd4b !important;
+    }
+    
+    #article-container pre[class*="language-"]::before {
+        top: 6px !important;
+        right: 12px !important;
+        font-size: 0.7em !important;
+        padding: 3px 10px !important;
+    }
+}
+
+/* ============================================
+   深色/浅色模式适配（可选）
+============================================ */
+
+@media (prefers-color-scheme: light) {
+    #article-container pre {
+        background: linear-gradient(145deg, #f7fafc, #edf2f7) !important;
+        border-color: rgba(0, 0, 0, 0.1) !important;
+    }
+    
+    #article-container pre code {
+        color: #2d3748 !important;
+    }
+    
+    #article-container pre::before {
+        background: linear-gradient(90deg, #f7fafc, #edf2f7) !important;
+        border-bottom-color: rgba(0, 0, 0, 0.05) !important;
+    }
+    
+    #article-container :not(pre) > code {
+        background: rgba(237, 242, 247, 0.8) !important;
+        color: #2d3748 !important;
+        border-color: rgba(45, 55, 72, 0.1) !important;
+    }
+}
+
+/* ============================================
+   兼容性修复
+============================================ */
+
+/* 确保链接图标不干扰 */
+#article-container h1 .headerlink,
+#article-container h2 .headerlink,
+#article-container h3 .headerlink,
+#article-container h4 .headerlink,
+#article-container h5 .headerlink,
+#article-container h6 .headerlink {
+    position: relative !important;
+    z-index: 10 !important;
+    margin-left: 5px !important;
+}
+
+/* 代码块中的选择文本样式 */
+#article-container pre ::selection {
+    background: rgba(80, 250, 123, 0.3) !important;
+    color: inherit !important;
+}
+
+/* 代码块聚焦状态 */
+#article-container pre:focus-within {
+    outline: 2px solid rgba(80, 250, 123, 0.5) !important;
+    outline-offset: 2px !important;
 }
