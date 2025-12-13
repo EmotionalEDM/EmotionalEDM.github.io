@@ -2,6 +2,7 @@
    FontAwesome 图标字体支持
 ============================================ */
 
+/* 确保 FontAwesome 图标正确显示 */
 @font-face {
     font-family: 'Font Awesome 6 Free';
     font-style: normal;
@@ -12,9 +13,10 @@
 }
 
 /* ============================================
-   文章标题 H1-H6 图标样式
+   文章标题 H1-H6 图标样式（带渐变色）
 ============================================ */
 
+/* 通用样式：所有标题图标的共同属性 */
 #article-container h1::before,
 #article-container h2::before,
 #article-container h3::before,
@@ -35,6 +37,7 @@
     transition: all 0.3s ease !important;
 }
 
+/* 为所有文章标题添加图标容器 */
 #article-container h1,
 #article-container h2,
 #article-container h3,
@@ -47,306 +50,165 @@
     border-left: none !important;
 }
 
-/* H1 标题 - 皇冠图标 */
+/* ============== H1 标题 - 皇冠图标（仅修改这里） ============== */
 #article-container h1::before {
-    content: "\f521" !important;
+    content: "\f521" !important; /* 皇冠图标（原风车图标 \f863） */
+    
+    /* 金色渐变效果 */
     background: linear-gradient(135deg, #FFD700, #FFA500) !important;
     -webkit-background-clip: text !important;
     background-clip: text !important;
     color: transparent !important;
+    
     font-size: 1.3em !important;
     min-width: 24px !important;
+    width: auto !important;
+    height: auto !important;
 }
 
-/* H2 标题 - 齿轮图标 */
+/* ============== 其他标题保持原有配置不变 ============== */
+
+/* H2 标题 - 齿轮图标（蓝色渐变） */
 #article-container h2::before {
-    content: "\f013" !important;
+    content: "\f013" !important; /* 齿轮图标 */
     background: linear-gradient(135deg, #3498db, #2ecc71) !important;
     -webkit-background-clip: text !important;
     background-clip: text !important;
     color: transparent !important;
     font-size: 1.1em !important;
     min-width: 22px !important;
+    width: auto !important;
+    height: auto !important;
 }
 
-/* H3 标题 - 灯泡图标 */
+/* H3 标题 - 灯泡图标（黄色渐变） */
 #article-container h3::before {
-    content: "\f0eb" !important;
+    content: "\f0eb" !important; /* 灯泡图标 */
     background: linear-gradient(135deg, #f1c40f, #e74c3c) !important;
     -webkit-background-clip: text !important;
     background-clip: text !important;
     color: transparent !important;
     font-size: 1em !important;
     min-width: 20px !important;
+    width: auto !important;
+    height: auto !important;
 }
 
-/* H4 标题 - 书签图标 */
+/* H4 标题 - 书签图标（绿色渐变） */
 #article-container h4::before {
-    content: "\f02e" !important;
+    content: "\f02e" !important; /* 书签图标 */
     background: linear-gradient(135deg, #2ecc71, #3498db) !important;
     -webkit-background-clip: text !important;
     background-clip: text !important;
     color: transparent !important;
     font-size: 0.9em !important;
     min-width: 18px !important;
+    width: auto !important;
+    height: auto !important;
 }
 
-/* H5 标题 - 旗子图标 */
+/* H5 标题 - 旗子图标（紫色渐变） */
 #article-container h5::before {
-    content: "\f024" !important;
+    content: "\f024" !important; /* 旗子图标 */
     background: linear-gradient(135deg, #9b59b6, #e74c3c) !important;
     -webkit-background-clip: text !important;
     background-clip: text !important;
     color: transparent !important;
     font-size: 0.85em !important;
     min-width: 16px !important;
+    width: auto !important;
+    height: auto !important;
 }
 
-/* H6 标题 - 点图标 */
+/* H6 标题 - 点图标（灰色渐变） */
 #article-container h6::before {
-    content: "\f192" !important;
+    content: "\f192" !important; /* 圆点图标 */
     background: linear-gradient(135deg, #95a5a6, #7f8c8d) !important;
     -webkit-background-clip: text !important;
     background-clip: text !important;
     color: transparent !important;
     font-size: 0.8em !important;
     min-width: 14px !important;
+    width: auto !important;
+    height: auto !important;
 }
 
 /* ============================================
-   代码块美化 - 针对 Hexo highlight.js
+   鼠标悬停效果（渐变变色）
 ============================================ */
 
-/* highlight.js 代码块容器 */
-#article-container figure.highlight,
-#article-container pre.hljs {
-    position: relative !important;
-    border-radius: 12px !important;
-    background: linear-gradient(145deg, #1a1a2e, #16213e) !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    box-shadow: 
-        0 4px 25px rgba(0, 0, 0, 0.4),
-        0 0 0 1px rgba(255, 255, 255, 0.05) inset !important;
-    margin: 1.8em 0 !important;
-    overflow: hidden !important;
-    transition: all 0.3s ease !important;
+/* H1 悬停效果 */
+#article-container h1:hover::before {
+    background: linear-gradient(135deg, #FF6347, #FF4500) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    font-size: 1.4em !important;
+    transform: translateY(-50%) scale(1.05) !important;
 }
 
-/* 代码块悬停效果 */
-#article-container figure.highlight:hover,
-#article-container pre.hljs:hover {
-    transform: translateY(-3px) !important;
-    box-shadow: 
-        0 8px 35px rgba(0, 0, 0, 0.5),
-        0 0 0 1px rgba(255, 255, 255, 0.08) inset !important;
+/* H2 悬停 - 深蓝色渐变 */
+#article-container h2:hover::before {
+    background: linear-gradient(135deg, #2980b9, #27ae60) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    font-size: 1.2em !important;
+    transform: translateY(-50%) scale(1.05) !important;
 }
 
-/* 代码块顶部工具栏 */
-#article-container figure.highlight::before,
-#article-container pre.hljs::before {
-    content: '' !important;
-    display: block !important;
-    height: 40px !important;
-    background: linear-gradient(90deg, #1a1a2e, #16213e) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
-    border-radius: 12px 12px 0 0 !important;
-    position: relative !important;
+/* H3 悬停 - 金色渐变 */
+#article-container h3:hover::before {
+    background: linear-gradient(135deg, #f39c12, #d35400) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    font-size: 1.1em !important;
+    transform: translateY(-50%) scale(1.05) !important;
 }
 
-/* 顶部装饰圆点 */
-#article-container figure.highlight::after,
-#article-container pre.hljs::after {
-    content: '' !important;
-    position: absolute !important;
-    top: 14px !important;
-    left: 18px !important;
-    width: 14px !important;
-    height: 14px !important;
-    border-radius: 50% !important;
-    background: linear-gradient(135deg, #ff5f56, #ff3b30) !important;
-    box-shadow: 
-        24px 0 0 linear-gradient(135deg, #ffbd2e, #ffa500),
-        48px 0 0 linear-gradient(135deg, #27c93f, #1d9b27) !important;
-    z-index: 2 !important;
-    transition: all 0.3s ease !important;
+/* H4 悬停 - 青绿色渐变 */
+#article-container h4:hover::before {
+    background: linear-gradient(135deg, #1abc9c, #16a085) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    font-size: 1em !important;
+    transform: translateY(-50%) scale(1.05) !important;
 }
 
-/* 代码块内部代码区域 */
-#article-container figure.highlight td.code,
-#article-container pre.hljs code {
-    display: block !important;
-    padding: 1.6em !important;
-    font-family: 'JetBrains Mono', 'Cascadia Code', 'SF Mono', Monaco, 'Consolas', monospace !important;
-    font-size: 0.92em !important;
-    line-height: 1.7 !important;
-    color: #e6e6e6 !important;
-    background: transparent !important;
-    border-radius: 0 0 12px 12px !important;
-    overflow-x: auto !important;
-    scrollbar-width: thin !important;
-    scrollbar-color: #4a4a6d #1a1a2e !important;
+/* H5 悬停 - 深紫色渐变 */
+#article-container h5:hover::before {
+    background: linear-gradient(135deg, #8e44ad, #c0392b) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    font-size: 0.95em !important;
+    transform: translateY(-50%) scale(1.05) !important;
 }
 
-/* 行号样式 */
-#article-container figure.highlight .gutter {
-    background: rgba(0, 0, 0, 0.2) !important;
-    border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
-    color: #888 !important;
-    text-align: center !important;
-    padding: 1.6em 0.8em !important;
-    user-select: none !important;
-    min-width: 3.5em !important;
-}
-
-/* 滚动条美化 */
-#article-container figure.highlight td.code::-webkit-scrollbar,
-#article-container pre.hljs code::-webkit-scrollbar {
-    height: 10px !important;
-    width: 10px !important;
-}
-
-#article-container figure.highlight td.code::-webkit-scrollbar-track,
-#article-container pre.hljs code::-webkit-scrollbar-track {
-    background: #1a1a2e !important;
-    border-radius: 5px !important;
-}
-
-#article-container figure.highlight td.code::-webkit-scrollbar-thumb,
-#article-container pre.hljs code::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, #4a4a6d, #3a3a5d) !important;
-    border-radius: 5px !important;
-    border: 2px solid #1a1a2e !important;
-}
-
-#article-container figure.highlight td.code::-webkit-scrollbar-thumb:hover,
-#article-container pre.hljs code::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(135deg, #5a5a8d, #4a4a7d) !important;
-}
-
-/* 语言标签显示 */
-#article-container figure.highlight .caption {
-    position: absolute !important;
-    top: 10px !important;
-    right: 15px !important;
-    font-family: 'JetBrains Mono', monospace !important;
-    font-size: 0.75em !important;
-    color: #a0a0c0 !important;
-    background: rgba(0, 0, 0, 0.4) !important;
-    padding: 4px 14px !important;
-    border-radius: 20px !important;
-    z-index: 3 !important;
-    text-transform: uppercase !important;
-    letter-spacing: 1px !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    backdrop-filter: blur(5px) !important;
-}
-
-/* highlight.js 语法高亮颜色定制 */
-#article-container .hljs {
-    background: transparent !important;
-}
-
-#article-container .hljs-keyword,
-#article-container .hljs-selector-tag,
-#article-container .hljs-literal {
-    color: #ff6b9d !important;
-    font-weight: 600 !important;
-}
-
-#article-container .hljs-string,
-#article-container .hljs-doctag {
-    color: #98c379 !important;
-}
-
-#article-container .hljs-title,
-#article-container .hljs-section,
-#article-container .hljs-attribute {
-    color: #e5c07b !important;
-}
-
-#article-container .hljs-comment {
-    color: #5c6370 !important;
-    font-style: italic !important;
-}
-
-#article-container .hljs-number,
-#article-container .hljs-meta {
-    color: #d19a66 !important;
-}
-
-#article-container .hljs-built_in,
-#article-container .hljs-type {
-    color: #56b6c2 !important;
-}
-
-#article-container .hljs-function .hljs-title {
-    color: #61afef !important;
-}
-
-#article-container .hljs-params {
-    color: #c678dd !important;
-}
-
-#article-container .hljs-regexp,
-#article-container .hljs-link {
-    color: #e06c75 !important;
-}
-
-/* 内联代码 */
-#article-container :not(pre) > code {
-    background: linear-gradient(135deg, rgba(26, 26, 46, 0.2), rgba(22, 33, 62, 0.2)) !important;
-    color: #ff6b9d !important;
-    padding: 0.25em 0.5em !important;
-    border-radius: 6px !important;
-    font-size: 0.9em !important;
-    font-family: 'JetBrains Mono', monospace !important;
-    border: 1px solid rgba(255, 107, 157, 0.3) !important;
-    transition: all 0.2s ease !important;
-    font-weight: 500 !important;
-}
-
-#article-container :not(pre) > code:hover {
-    background: linear-gradient(135deg, rgba(26, 26, 46, 0.3), rgba(22, 33, 62, 0.3)) !important;
-    border-color: rgba(255, 107, 157, 0.5) !important;
-    transform: translateY(-2px) !important;
-    box-shadow: 0 4px 12px rgba(255, 107, 157, 0.15) !important;
-}
-
-/* 代码复制按钮样式 */
-#article-container figure.highlight .copy-btn {
-    position: absolute !important;
-    top: 10px !important;
-    right: 90px !important;
-    background: rgba(0, 0, 0, 0.4) !important;
-    color: #a0a0c0 !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    padding: 4px 12px !important;
-    border-radius: 15px !important;
-    font-size: 0.7em !important;
-    cursor: pointer !important;
-    opacity: 0 !important;
-    transition: all 0.3s ease !important;
-    z-index: 3 !important;
-    backdrop-filter: blur(5px) !important;
-}
-
-#article-container figure.highlight:hover .copy-btn {
-    opacity: 1 !important;
-}
-
-#article-container figure.highlight .copy-btn:hover {
-    background: rgba(0, 0, 0, 0.6) !important;
-    color: #ffffff !important;
-    border-color: rgba(255, 255, 255, 0.3) !important;
-    transform: scale(1.05) !important;
+/* H6 悬停 - 深灰色渐变 */
+#article-container h6:hover::before {
+    background: linear-gradient(135deg, #7f8c8d, #34495e) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    font-size: 0.85em !important;
+    transform: translateY(-50%) scale(1.05) !important;
 }
 
 /* ============================================
-   移动端适配
+   兼容性修复
 ============================================ */
 
+/* 确保链接图标不干扰 */
+#article-container h1 .headerlink,
+#article-container h2 .headerlink,
+#article-container h3 .headerlink,
+#article-container h4 .headerlink,
+#article-container h5 .headerlink,
+#article-container h6 .headerlink {
+    position: relative !important;
+    z-index: 10 !important;
+    margin-left: 5px !important;
+}
+
+/* 修复移动端显示 */
 @media screen and (max-width: 768px) {
-    /* 标题调整 */
     #article-container h1,
     #article-container h2,
     #article-container h3,
@@ -377,105 +239,4 @@
         font-size: 0.8em !important;
         min-width: 16px !important;
     }
-    
-    /* 代码块移动端调整 */
-    #article-container figure.highlight,
-    #article-container pre.hljs {
-        margin: 1.2em 0 !important;
-        border-radius: 10px !important;
-    }
-    
-    #article-container figure.highlight td.code,
-    #article-container pre.hljs code {
-        padding: 1.2em !important;
-        font-size: 0.85em !important;
-        line-height: 1.6 !important;
-    }
-    
-    #article-container figure.highlight::before,
-    #article-container pre.hljs::before {
-        height: 36px !important;
-    }
-    
-    #article-container figure.highlight::after,
-    #article-container pre.hljs::after {
-        top: 12px !important;
-        left: 16px !important;
-        width: 12px !important;
-        height: 12px !important;
-        box-shadow: 
-            22px 0 0 linear-gradient(135deg, #ffbd2e, #ffa500),
-            44px 0 0 linear-gradient(135deg, #27c93f, #1d9b27) !important;
-    }
-    
-    #article-container figure.highlight .gutter {
-        padding: 1.2em 0.6em !important;
-        min-width: 3em !important;
-        font-size: 0.85em !important;
-    }
-    
-    #article-container figure.highlight .caption {
-        top: 8px !important;
-        right: 12px !important;
-        font-size: 0.7em !important;
-        padding: 3px 10px !important;
-    }
-    
-    #article-container figure.highlight .copy-btn {
-        right: 80px !important;
-        padding: 3px 10px !important;
-        font-size: 0.65em !important;
-    }
-}
-
-/* ============================================
-   兼容性修复
-============================================ */
-
-/* 确保链接图标不干扰 */
-#article-container h1 .headerlink,
-#article-container h2 .headerlink,
-#article-container h3 .headerlink,
-#article-container h4 .headerlink,
-#article-container h5 .headerlink,
-#article-container h6 .headerlink {
-    position: relative !important;
-    z-index: 10 !important;
-    margin-left: 5px !important;
-}
-
-/* 代码块文本选择样式 */
-#article-container figure.highlight ::selection,
-#article-container pre.hljs ::selection {
-    background: rgba(86, 182, 194, 0.3) !important;
-    color: #ffffff !important;
-}
-
-/* 代码块中的链接 */
-#article-container figure.highlight a,
-#article-container pre.hljs a {
-    color: #61afef !important;
-    text-decoration: underline dotted !important;
-}
-
-#article-container figure.highlight a:hover,
-#article-container pre.hljs a:hover {
-    color: #98c379 !important;
-    text-decoration: underline solid !important;
-}
-
-/* 表格中的代码块适配 */
-#article-container table pre {
-    margin: 0.5em 0 !important;
-}
-
-/* 代码块行高亮 */
-#article-container figure.highlight .line.hljs,
-#article-container pre.hljs .line {
-    transition: background-color 0.2s ease !important;
-}
-
-#article-container figure.highlight .line.hljs:hover,
-#article-container pre.hljs .line:hover {
-    background: rgba(255, 255, 255, 0.05) !important;
 }
