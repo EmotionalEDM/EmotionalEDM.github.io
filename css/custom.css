@@ -1,11 +1,25 @@
-/* 引入JetBrains Mono字体（CDN方式） */
+/* 顶部：若用JetBrains Mono，先引入（Windows也能加载CDN字体） */
 @font-face {
-  font-family: 'JetBrains Mono';
-  src: url('https://cdn.jsdelivr.net/npm/jetbrains-mono/web/woff2/JetBrainsMono-Regular.woff2') format('woff2'),
-       url('https://cdn.jsdelivr.net/npm/jetbrains-mono/web/woff/JetBrainsMono-Regular.woff') format('woff');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap; /* 字体加载时不闪屏 */
+  font-family: 'JetBrains Mono' !important;
+  src: url('https://cdn.jsdelivr.net/npm/jetbrains-mono/web/woff2/JetBrainsMono-Regular.woff2') format('woff2') !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+  font-display: swap !important;
+}
+
+/* Windows优先Consolas，强制覆盖所有代码块字体 */
+figure.highlight pre *,
+.highlight pre *,
+pre code,
+code,
+.line-numbers,
+.code-lang,
+#article-container figure.highlight pre {
+  /* Windows优先级：Consolas > JetBrains Mono > 微软雅黑Mono > 兜底 */
+  font-family: Consolas, 'JetBrains Mono', "微软雅黑 Mono", monospace !important;
+  font-size: 14px !important; /* 字号可改13/15px */
+  font-weight: 400 !important;
+  line-height: 1.5 !important;
 }
 
 /* 可选：引入粗体版本（高亮关键词用） */
