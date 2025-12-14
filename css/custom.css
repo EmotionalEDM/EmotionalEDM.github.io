@@ -240,3 +240,18 @@
         min-width: 16px !important;
     }
 }
+
+/* 统一修改代码块所有文字的字体（核心） */
+figure.highlight pre,        /* 代码主体 */
+figure.highlight .line-numbers, /* 代码行号 */
+figure.highlight .code-lang    /* 代码语言栏 */
+{
+  /* 字体族：优先选好看的等宽字体，跨平台兼容 */
+  font-family: Consolas, Menlo, Monaco, "Courier New", monospace, "Microsoft YaHei Mono";
+  /* 可选：调整字体大小（默认可能偏小，按需改） */
+  font-size: 14px;
+  /* 可选：字体粗细（400常规，500稍粗，600粗体） */
+  font-weight: 400;
+  /* 可选：行高（调整代码行间距，1.5更易读） */
+  line-height: 1.5;
+}
