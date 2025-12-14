@@ -1,3 +1,34 @@
+/* 引入JetBrains Mono字体（CDN方式） */
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('https://cdn.jsdelivr.net/npm/jetbrains-mono/web/woff2/JetBrainsMono-Regular.woff2') format('woff2'),
+       url('https://cdn.jsdelivr.net/npm/jetbrains-mono/web/woff/JetBrainsMono-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap; /* 字体加载时不闪屏 */
+}
+
+/* 可选：引入粗体版本（高亮关键词用） */
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('https://cdn.jsdelivr.net/npm/jetbrains-mono/web/woff2/JetBrainsMono-Bold.woff2') format('woff2'),
+       url('https://cdn.jsdelivr.net/npm/jetbrains-mono/web/woff/JetBrainsMono-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 代码块使用JetBrains Mono字体 */
+figure.highlight pre,
+figure.highlight .line-numbers,
+figure.highlight .code-lang
+{
+  font-family: 'JetBrains Mono', Consolas, Menlo, monospace;
+  font-size: 14px; /* 字号按需调整，13-15px最佳 */
+  font-weight: 400;
+  line-height: 1.5;
+}
+
 /* ============================================
    FontAwesome 图标字体支持
 ============================================ */
@@ -241,17 +272,3 @@
     }
 }
 
-/* 统一修改代码块所有文字的字体（核心） */
-figure.highlight pre,        /* 代码主体 */
-figure.highlight .line-numbers, /* 代码行号 */
-figure.highlight .code-lang    /* 代码语言栏 */
-{
-  /* 字体族：优先选好看的等宽字体，跨平台兼容 */
-  font-family: Consolas, Menlo, Monaco, "Courier New", monospace, "Microsoft YaHei Mono";
-  /* 可选：调整字体大小（默认可能偏小，按需改） */
-  font-size: 14px;
-  /* 可选：字体粗细（400常规，500稍粗，600粗体） */
-  font-weight: 400;
-  /* 可选：行高（调整代码行间距，1.5更易读） */
-  line-height: 1.5;
-}
