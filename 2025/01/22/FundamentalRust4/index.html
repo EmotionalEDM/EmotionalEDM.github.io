@@ -1,0 +1,164 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Rust 基础入门（四）（更新中） | EmotionalEDM</title><meta name="author" content="EmotionalEDM"><meta name="copyright" content="EmotionalEDM"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="本文为阅读《Rust圣经》的第一篇笔记，内容包括《Rust基础入门》最后4章节（11~14），建议先看完本网站文章《Rust基础入门（一）&#x2F;（二）&#x2F;（三）》等，如果想查看原书请搜索“Rust圣经”或点击此链接：[Rust语言圣经(Rust Course)](https:&#x2F;&#x2F;course.rs&#x2F;about-book.html)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rust 基础入门（四）（更新中）">
+<meta property="og:url" content="http://emotionaledm.github.io/2025/01/22/FundamentalRust4/index.html">
+<meta property="og:site_name" content="EmotionalEDM">
+<meta property="og:description" content="本文为阅读《Rust圣经》的第一篇笔记，内容包括《Rust基础入门》最后4章节（11~14），建议先看完本网站文章《Rust基础入门（一）&#x2F;（二）&#x2F;（三）》等，如果想查看原书请搜索“Rust圣经”或点击此链接：[Rust语言圣经(Rust Course)](https:&#x2F;&#x2F;course.rs&#x2F;about-book.html)">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.imageoss.com/images/2026/01/22/jump_1080_base5fe7f2630f5bf399.jpg">
+<meta property="article:published_time" content="2025-01-21T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-01-22T01:31:32.807Z">
+<meta property="article:author" content="EmotionalEDM">
+<meta property="article:tag" content="Rust">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.imageoss.com/images/2026/01/22/jump_1080_base5fe7f2630f5bf399.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Rust 基础入门（四）（更新中）",
+  "url": "http://emotionaledm.github.io/2025/01/22/FundamentalRust4/",
+  "image": "https://www.imageoss.com/images/2026/01/22/jump_1080_base5fe7f2630f5bf399.jpg",
+  "datePublished": "2025-01-21T16:00:00.000Z",
+  "dateModified": "2026-01-22T01:31:32.807Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "EmotionalEDM",
+      "url": "http://emotionaledm.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="https://www.imageoss.com/images/2025/08/31/_2025-08-31_154628_5697ba1eb627e156b0e.jpg"><link rel="canonical" href="http://emotionaledm.github.io/2025/01/22/FundamentalRust4/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":400,"highlightFullpage":true,"highlightMacStyle":true},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Rust 基础入门（四）（更新中）',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/custom.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://www.imageoss.com/images/2025/08/31/_2025-08-31_154628_5697ba1eb627e156b0e.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/video/"><i class="fa-fw fas fa-video"></i><span> 视频</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://www.imageoss.com/images/2026/01/22/jump_1080_base5fe7f2630f5bf399.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">EmotionalEDM</span></a><a class="nav-page-title" href="/"><span class="site-name">Rust 基础入门（四）（更新中）</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  Back to Home</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/video/"><i class="fa-fw fas fa-video"></i><span> 视频</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Rust 基础入门（四）（更新中）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-01-21T16:00:00.000Z" title="Created 2025-01-22 00:00:00">2025-01-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-01-22T01:31:32.807Z" title="Updated 2026-01-22 09:31:32">2026-01-22</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p><em><strong>本文为阅读《Rust圣经》的第一篇笔记，内容包括《Rust基础入门》最后4章节（11~14），建议先看完本网站文章《Rust基础入门（一）&#x2F;（二）&#x2F;（三）》等，如果想查看原书请搜索“Rust圣经”或点击此链接：[Rust语言圣经(Rust Course)](<a target="_blank" rel="noopener" href="https://course.rs/about-book.html">https://course.rs/about-book.html</a>)</strong></em></p>
+<hr>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="http://emotionaledm.github.io">EmotionalEDM</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="http://emotionaledm.github.io/2025/01/22/FundamentalRust4/">http://emotionaledm.github.io/2025/01/22/FundamentalRust4/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Rust/">Rust</a></div><div class="post-share"><div class="social-share" data-image="https://www.imageoss.com/images/2026/01/22/jump_1080_base5fe7f2630f5bf399.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2025/12/01/FundamentalRust1/" title="Rust 基础入门（一）（已完结）"><img class="cover" src="https://www.imageoss.com/images/2025/12/02/Illustration-178803c2c8d45f3227d5.png" onerror="onerror=null;src='https://www.imageoss.com/images/2025/12/02/Cover-Hd---aurora58ed563ed7ae0cae.png'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">Rust 基础入门（一）（已完结）</div></div><div class="info-2"><div class="info-item-1">本文为阅读《Rust圣经》的第一篇笔记，内容包括《Rust基础入门》前4章节，后续章节请移步到本网站文章《Rust基础入门（二）》等，如果想查看原书请搜索“Rust圣经”或点击此链接：[Rust语言圣经(Rust Course)](https://course.rs/about-book.html)  变量绑定与解构变量命名Rust语言变量命名不能和关键字重复 变量绑定将一个值绑定给一个变量，类似赋值但不完全是赋值，要注意“所有权”这个概念。 变量可变性Rust变量默认情况下不可变：  不可变变量：  12let x = 5;//此时不能再对x赋值，若有代码“x = 6;”则会报错  可变变量：  12let mut x = 5;//可以对x进行再赋值  未使用的变量如果未使用的变量开头不是下划线，则会引发warning 避免方法：  变量开头使用下划线  使用 #![allow(unused)] 属性，例如： 1234#![allow(unused)]fn main() &#123;    let x = 1;&#125;  变量解构1let (a, mut b): (bool...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/12/01/FundamentalRust1/" title="Rust 基础入门（一）（已完结）"><img class="cover" src="https://www.imageoss.com/images/2025/12/02/Illustration-178803c2c8d45f3227d5.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-12-01</div><div class="info-item-2">Rust 基础入门（一）（已完结）</div></div><div class="info-2"><div class="info-item-1">本文为阅读《Rust圣经》的第一篇笔记，内容包括《Rust基础入门》前4章节，后续章节请移步到本网站文章《Rust基础入门（二）》等，如果想查看原书请搜索“Rust圣经”或点击此链接：[Rust语言圣经(Rust Course)](https://course.rs/about-book.html)  变量绑定与解构变量命名Rust语言变量命名不能和关键字重复 变量绑定将一个值绑定给一个变量，类似赋值但不完全是赋值，要注意“所有权”这个概念。 变量可变性Rust变量默认情况下不可变：  不可变变量：  12let x = 5;//此时不能再对x赋值，若有代码“x = 6;”则会报错  可变变量：  12let mut x = 5;//可以对x进行再赋值  未使用的变量如果未使用的变量开头不是下划线，则会引发warning 避免方法：  变量开头使用下划线  使用 #![allow(unused)] 属性，例如： 1234#![allow(unused)]fn main() &#123;    let x = 1;&#125;  变量解构1let (a, mut b): (bool...</div></div></div></a><a class="pagination-related" href="/2025/12/14/FundamentalRust2/" title="Rust 基础入门（二）（已完结）"><img class="cover" src="https://www.imageoss.com/images/2025/12/14/Illustrationffa07e9e40936540.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-12-14</div><div class="info-item-2">Rust 基础入门（二）（已完结）</div></div><div class="info-2"><div class="info-item-1">本文为阅读《Rust圣经》的第二篇笔记，内容包括《Rust基础入门》5~7章节，阅读本文前建议先阅读本网站的文章《Rust基础入门（一）》，后续章节请移步到本网站文章《Rust基础入门（三）》等，如果想查看原书请搜索“Rust圣经”或点击此链接：[Rust语言圣经(Rust Course)](https://course.rs/about-book.html)  流程控制if 分支控制和大多数编程语言非常类似，Rust 也由 if 语句控制分支 12345if condition == true &#123;    // A...&#125; else &#123;    // B...&#125;  if 语句块可以作为语句，也可以作为表达式，例如下面两个代码等效： 12345678910111213141516171819202122/* 1 */fn main() &#123;    let condition = true;    let number = if condition &#123;        5    &#125; else &#123;        ...</div></div></div></a><a class="pagination-related" href="/2026/01/18/FundamentalRust3/" title="Rust 基础入门（三）（更新中）"><img class="cover" src="https://www.imageoss.com/images/2026/01/20/Cover-Hd---the-promised-land6ee7e8dae709c566.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-01-18</div><div class="info-item-2">Rust 基础入门（三）（更新中）</div></div><div class="info-2"><div class="info-item-1">本文为阅读《Rust圣经》的第三篇笔记，内容包括《Rust基础入门》8~10章节，阅读本文前建议先阅读本网站的文章《Rust基础入门（一）》《Rust基础入门（二）》，后续章节请移步到本网站文章《Rust基础入门（四）》等，如果想查看原书请搜索“Rust圣经”或点击此链接：[Rust语言圣经(Rust Course)](https://course.rs/about-book.html)  泛型和特征泛型 Generics泛型的格式123456789// 单一泛型参数fn largest&lt;T&gt;(list: &amp;[T]) -&gt; T &#123;    // ...&#125;// 多个泛型参数fn add&lt;T, U&gt;(a: T, b: T) -&gt; bool &#123;    // ...&#125;  泛型参数的名称你可以任意起，但是出于惯例，我们都用 T （T 是 type 的首字母）来作为首选，这个名称越短越好，除非需要表达含义，否则一个字母是最完美的。 注意：泛型的T可以是任何类型，但是上述的这些例子中，并不是所有类型都能比较（比较...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://www.imageoss.com/images/2025/08/31/_2025-08-31_154628_5697ba1eb627e156b0e.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">EmotionalEDM</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/EmotionalEDM"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">代码敲累了就打打音游吧~ 强烈推荐 Rizline 和 A Dance of Fire and Ice 哦~ 主页右上角有许多好玩的可以看看~</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/01/18/FundamentalRust3/" title="Rust 基础入门（三）（更新中）"><img src="https://www.imageoss.com/images/2026/01/20/Cover-Hd---the-promised-land6ee7e8dae709c566.png" onerror="this.onerror=null;this.src='https://www.imageoss.com/images/2025/12/02/Cover-Hd---aurora58ed563ed7ae0cae.png'" alt="Rust 基础入门（三）（更新中）"/></a><div class="content"><a class="title" href="/2026/01/18/FundamentalRust3/" title="Rust 基础入门（三）（更新中）">Rust 基础入门（三）（更新中）</a><time datetime="2026-01-17T16:00:00.000Z" title="Created 2026-01-18 00:00:00">2026-01-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/14/FundamentalRust2/" title="Rust 基础入门（二）（已完结）"><img src="https://www.imageoss.com/images/2025/12/14/Illustrationffa07e9e40936540.png" onerror="this.onerror=null;this.src='https://www.imageoss.com/images/2025/12/02/Cover-Hd---aurora58ed563ed7ae0cae.png'" alt="Rust 基础入门（二）（已完结）"/></a><div class="content"><a class="title" href="/2025/12/14/FundamentalRust2/" title="Rust 基础入门（二）（已完结）">Rust 基础入门（二）（已完结）</a><time datetime="2025-12-13T16:00:00.000Z" title="Created 2025-12-14 00:00:00">2025-12-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/11/MoeWeb1/" title="MoeCTF 2025 Web 入门第一弹（已完结）"><img src="https://www.imageoss.com/images/2025/12/11/ifi_1080_basea32b8496c22057fb.jpg" onerror="this.onerror=null;this.src='https://www.imageoss.com/images/2025/12/02/Cover-Hd---aurora58ed563ed7ae0cae.png'" alt="MoeCTF 2025 Web 入门第一弹（已完结）"/></a><div class="content"><a class="title" href="/2025/12/11/MoeWeb1/" title="MoeCTF 2025 Web 入门第一弹（已完结）">MoeCTF 2025 Web 入门第一弹（已完结）</a><time datetime="2025-12-10T16:00:00.000Z" title="Created 2025-12-11 00:00:00">2025-12-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/01/FundamentalRust1/" title="Rust 基础入门（一）（已完结）"><img src="https://www.imageoss.com/images/2025/12/02/Illustration-178803c2c8d45f3227d5.png" onerror="this.onerror=null;this.src='https://www.imageoss.com/images/2025/12/02/Cover-Hd---aurora58ed563ed7ae0cae.png'" alt="Rust 基础入门（一）（已完结）"/></a><div class="content"><a class="title" href="/2025/12/01/FundamentalRust1/" title="Rust 基础入门（一）（已完结）">Rust 基础入门（一）（已完结）</a><time datetime="2025-11-30T16:00:00.000Z" title="Created 2025-12-01 00:00:00">2025-12-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/01/22/FundamentalRust4/" title="Rust 基础入门（四）（更新中）"><img src="https://www.imageoss.com/images/2026/01/22/jump_1080_base5fe7f2630f5bf399.jpg" onerror="this.onerror=null;this.src='https://www.imageoss.com/images/2025/12/02/Cover-Hd---aurora58ed563ed7ae0cae.png'" alt="Rust 基础入门（四）（更新中）"/></a><div class="content"><a class="title" href="/2025/01/22/FundamentalRust4/" title="Rust 基础入门（四）（更新中）">Rust 基础入门（四）（更新中）</a><time datetime="2025-01-21T16:00:00.000Z" title="Created 2025-01-22 00:00:00">2025-01-22</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(https://www.imageoss.com/images/2026/01/22/jump_1080_base5fe7f2630f5bf399.jpg);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By EmotionalEDM</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.4.3</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
