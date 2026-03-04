@@ -1,0 +1,288 @@
+/* 顶部：若用JetBrains Mono，先引入（Windows也能加载CDN字体） */
+@font-face {
+  font-family: 'JetBrains Mono' !important;
+  src: url('https://cdn.jsdelivr.net/npm/jetbrains-mono/web/woff2/JetBrainsMono-Regular.woff2') format('woff2') !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+  font-display: swap !important;
+}
+
+/* Windows优先Consolas，强制覆盖所有代码块字体 */
+figure.highlight pre *,
+.highlight pre *,
+pre code,
+code,
+.line-numbers,
+.code-lang,
+#article-container figure.highlight pre {
+  /* Windows优先级：Consolas > JetBrains Mono > 微软雅黑Mono > 兜底 */
+  font-family: Consolas, 'JetBrains Mono', "微软雅黑 Mono", monospace !important;
+  font-size: 14px !important; /* 字号可改13/15px */
+  font-weight: 400 !important;
+  line-height: 1.5 !important;
+}
+
+/* 可选：引入粗体版本（高亮关键词用） */
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('https://cdn.jsdelivr.net/npm/jetbrains-mono/web/woff2/JetBrainsMono-Bold.woff2') format('woff2'),
+       url('https://cdn.jsdelivr.net/npm/jetbrains-mono/web/woff/JetBrainsMono-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 代码块使用JetBrains Mono字体 */
+figure.highlight pre,
+figure.highlight .line-numbers,
+figure.highlight .code-lang
+{
+  font-family: 'JetBrains Mono', Consolas, Menlo, monospace;
+  font-size: 14px; /* 字号按需调整，13-15px最佳 */
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* ============================================
+   FontAwesome 图标字体支持
+============================================ */
+
+/* 确保 FontAwesome 图标正确显示 */
+@font-face {
+    font-family: 'Font Awesome 6 Free';
+    font-style: normal;
+    font-weight: 900;
+    font-display: block;
+    src: url("https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2") format("woff2"),
+         url("https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/webfonts/fa-solid-900.ttf") format("truetype");
+}
+
+/* ============================================
+   文章标题 H1-H6 图标样式（带渐变色）
+============================================ */
+
+/* 通用样式：所有标题图标的共同属性 */
+#article-container h1::before,
+#article-container h2::before,
+#article-container h3::before,
+#article-container h4::before,
+#article-container h5::before,
+#article-container h6::before {
+    font-family: 'Font Awesome 6 Free' !important;
+    font-weight: 900 !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    display: inline-block !important;
+    text-align: center !important;
+    line-height: 1 !important;
+    vertical-align: middle !important;
+    box-sizing: border-box !important;
+    transition: all 0.3s ease !important;
+}
+
+/* 为所有文章标题添加图标容器 */
+#article-container h1,
+#article-container h2,
+#article-container h3,
+#article-container h4,
+#article-container h5,
+#article-container h6 {
+    position: relative !important;
+    padding-left: 35px !important;
+    margin-left: 0 !important;
+    border-left: none !important;
+}
+
+/* ============== H1 标题 - 皇冠图标（仅修改这里） ============== */
+#article-container h1::before {
+    content: "\f521" !important; /* 皇冠图标（原风车图标 \f863） */
+    
+    /* 金色渐变效果 */
+    background: linear-gradient(135deg, #FFD700, #FFA500) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    color: transparent !important;
+    
+    font-size: 1.3em !important;
+    min-width: 24px !important;
+    width: auto !important;
+    height: auto !important;
+}
+
+/* ============== 其他标题保持原有配置不变 ============== */
+
+/* H2 标题 - 齿轮图标（蓝色渐变） */
+#article-container h2::before {
+    content: "\f013" !important; /* 齿轮图标 */
+    background: linear-gradient(135deg, #3498db, #2ecc71) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    color: transparent !important;
+    font-size: 1.1em !important;
+    min-width: 22px !important;
+    width: auto !important;
+    height: auto !important;
+}
+
+/* H3 标题 - 灯泡图标（黄色渐变） */
+#article-container h3::before {
+    content: "\f0eb" !important; /* 灯泡图标 */
+    background: linear-gradient(135deg, #f1c40f, #e74c3c) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    color: transparent !important;
+    font-size: 1em !important;
+    min-width: 20px !important;
+    width: auto !important;
+    height: auto !important;
+}
+
+/* H4 标题 - 书签图标（绿色渐变） */
+#article-container h4::before {
+    content: "\f02e" !important; /* 书签图标 */
+    background: linear-gradient(135deg, #2ecc71, #3498db) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    color: transparent !important;
+    font-size: 0.9em !important;
+    min-width: 18px !important;
+    width: auto !important;
+    height: auto !important;
+}
+
+/* H5 标题 - 旗子图标（紫色渐变） */
+#article-container h5::before {
+    content: "\f024" !important; /* 旗子图标 */
+    background: linear-gradient(135deg, #9b59b6, #e74c3c) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    color: transparent !important;
+    font-size: 0.85em !important;
+    min-width: 16px !important;
+    width: auto !important;
+    height: auto !important;
+}
+
+/* H6 标题 - 点图标（灰色渐变） */
+#article-container h6::before {
+    content: "\f192" !important; /* 圆点图标 */
+    background: linear-gradient(135deg, #95a5a6, #7f8c8d) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    color: transparent !important;
+    font-size: 0.8em !important;
+    min-width: 14px !important;
+    width: auto !important;
+    height: auto !important;
+}
+
+/* ============================================
+   鼠标悬停效果（渐变变色）
+============================================ */
+
+/* H1 悬停效果 */
+#article-container h1:hover::before {
+    background: linear-gradient(135deg, #FF6347, #FF4500) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    font-size: 1.4em !important;
+    transform: translateY(-50%) scale(1.05) !important;
+}
+
+/* H2 悬停 - 深蓝色渐变 */
+#article-container h2:hover::before {
+    background: linear-gradient(135deg, #2980b9, #27ae60) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    font-size: 1.2em !important;
+    transform: translateY(-50%) scale(1.05) !important;
+}
+
+/* H3 悬停 - 金色渐变 */
+#article-container h3:hover::before {
+    background: linear-gradient(135deg, #f39c12, #d35400) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    font-size: 1.1em !important;
+    transform: translateY(-50%) scale(1.05) !important;
+}
+
+/* H4 悬停 - 青绿色渐变 */
+#article-container h4:hover::before {
+    background: linear-gradient(135deg, #1abc9c, #16a085) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    font-size: 1em !important;
+    transform: translateY(-50%) scale(1.05) !important;
+}
+
+/* H5 悬停 - 深紫色渐变 */
+#article-container h5:hover::before {
+    background: linear-gradient(135deg, #8e44ad, #c0392b) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    font-size: 0.95em !important;
+    transform: translateY(-50%) scale(1.05) !important;
+}
+
+/* H6 悬停 - 深灰色渐变 */
+#article-container h6:hover::before {
+    background: linear-gradient(135deg, #7f8c8d, #34495e) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    font-size: 0.85em !important;
+    transform: translateY(-50%) scale(1.05) !important;
+}
+
+/* ============================================
+   兼容性修复
+============================================ */
+
+/* 确保链接图标不干扰 */
+#article-container h1 .headerlink,
+#article-container h2 .headerlink,
+#article-container h3 .headerlink,
+#article-container h4 .headerlink,
+#article-container h5 .headerlink,
+#article-container h6 .headerlink {
+    position: relative !important;
+    z-index: 10 !important;
+    margin-left: 5px !important;
+}
+
+/* 修复移动端显示 */
+@media screen and (max-width: 768px) {
+    #article-container h1,
+    #article-container h2,
+    #article-container h3,
+    #article-container h4,
+    #article-container h5,
+    #article-container h6 {
+        padding-left: 28px !important;
+    }
+    
+    #article-container h1::before {
+        font-size: 1.2em !important;
+        min-width: 22px !important;
+    }
+    
+    #article-container h2::before {
+        font-size: 1em !important;
+        min-width: 20px !important;
+    }
+    
+    #article-container h3::before {
+        font-size: 0.9em !important;
+        min-width: 18px !important;
+    }
+    
+    #article-container h4::before,
+    #article-container h5::before,
+    #article-container h6::before {
+        font-size: 0.8em !important;
+        min-width: 16px !important;
+    }
+}
+
