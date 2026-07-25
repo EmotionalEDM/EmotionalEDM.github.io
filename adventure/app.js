@@ -515,7 +515,7 @@
       case "DreamGas":
         return "Use once to put the monster to sleep for a short time.";
       case "Sword":
-        return "Essential against an awake monster. Also reveals the secret on a sleeping one.";
+        return "Essential against the monster.";
       default:
         return "";
     }
