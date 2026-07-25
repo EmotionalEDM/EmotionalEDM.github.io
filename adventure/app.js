@@ -437,7 +437,7 @@
       scoreItem.classList.add("is-zero");
     }
     scoreItem.innerHTML =
-      "<strong>通关评分</strong>" +
+      "<strong>Adventure Score</strong>" +
       "<span>" + escapeHtml(formatOutcomeScore(state.outcome)) + "</span>";
     ui.outcomeGoals.appendChild(scoreItem);
 
@@ -462,7 +462,7 @@
 
   function formatOutcomeScore(outcome) {
     if (outcome.type !== "win") {
-      return "0/100（未成功带出公主就离开或者被怪物击杀）";
+      return "0/100 (Failed to escape with the princess)";
     }
 
     var taskCount = outcome.goals.length;
@@ -473,12 +473,14 @@
     var detail;
 
     if (taskCount === 1) {
-      detail = completedTasks === 1 ? "过关并完成任务" : "仅过关但未完成任务";
+      detail = completedTasks === 1
+        ? "Escaped and completed the objective"
+        : "Escaped, but the objective was not completed";
     } else {
-      detail = "完成 " + completedTasks + "/" + taskCount + " 项任务";
+      detail = completedTasks + "/" + taskCount + " objectives completed";
     }
 
-    return score + "/100（" + detail + "）";
+    return score + "/100 (" + detail + ")";
   }
 
   function inventoryDetail(id) {
