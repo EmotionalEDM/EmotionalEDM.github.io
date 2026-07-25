@@ -79,7 +79,6 @@
     outcomeEyebrow: document.getElementById("outcome-eyebrow"),
     outcomeTitle: document.getElementById("outcome-title"),
     outcomeMessage: document.getElementById("outcome-message"),
-    outcomeScore: document.getElementById("outcome-score"),
     outcomeGoals: document.getElementById("outcome-goals"),
     outcomeRestart: document.getElementById("outcome-restart"),
     outcomeMenu: document.getElementById("outcome-menu")
@@ -430,9 +429,17 @@
     ui.outcomeEyebrow.textContent = state.outcome.type === "win" ? "Victory" : "Defeat";
     ui.outcomeTitle.textContent = state.outcome.title;
     ui.outcomeMessage.textContent = state.outcome.message;
-    ui.outcomeScore.textContent = formatOutcomeScore(state.outcome);
-    ui.outcomeScore.classList.toggle("is-zero", state.outcome.type !== "win");
     ui.outcomeGoals.innerHTML = "";
+
+    var scoreItem = document.createElement("article");
+    scoreItem.className = "goal-item outcome-score";
+    if (state.outcome.type !== "win") {
+      scoreItem.classList.add("is-zero");
+    }
+    scoreItem.innerHTML =
+      "<strong>通关评分</strong>" +
+      "<span>" + escapeHtml(formatOutcomeScore(state.outcome)) + "</span>";
+    ui.outcomeGoals.appendChild(scoreItem);
 
     state.outcome.goals.forEach(function (goal) {
       var item = document.createElement("article");
