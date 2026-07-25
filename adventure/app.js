@@ -79,6 +79,7 @@
     outcomeEyebrow: document.getElementById("outcome-eyebrow"),
     outcomeTitle: document.getElementById("outcome-title"),
     outcomeMessage: document.getElementById("outcome-message"),
+    outcomeScore: document.getElementById("outcome-score"),
     outcomeGoals: document.getElementById("outcome-goals"),
     outcomeRestart: document.getElementById("outcome-restart"),
     outcomeMenu: document.getElementById("outcome-menu")
@@ -429,6 +430,8 @@
     ui.outcomeEyebrow.textContent = state.outcome.type === "win" ? "Victory" : "Defeat";
     ui.outcomeTitle.textContent = state.outcome.title;
     ui.outcomeMessage.textContent = state.outcome.message;
+    ui.outcomeScore.textContent = formatOutcomeScore(state.outcome);
+    ui.outcomeScore.classList.toggle("is-zero", state.outcome.type !== "win");
     ui.outcomeGoals.innerHTML = "";
 
     state.outcome.goals.forEach(function (goal) {
@@ -448,6 +451,27 @@
   function closeOutcome() {
     ui.outcomeOverlay.classList.add("is-hidden");
     ui.outcomeOverlay.setAttribute("aria-hidden", "true");
+  }
+
+  function formatOutcomeScore(outcome) {
+    if (outcome.type !== "win") {
+      return "0/100（未成功带出公主就离开或者被怪物击杀）";
+    }
+
+    var taskCount = outcome.goals.length;
+    var completedTasks = outcome.goals.filter(function (goal) {
+      return goal.complete;
+    }).length;
+    var score = Math.round(((completedTasks + 1) / (taskCount + 1)) * 100);
+    var detail;
+
+    if (taskCount === 1) {
+      detail = completedTasks === 1 ? "过关并完成任务" : "仅过关但未完成任务";
+    } else {
+      detail = "完成 " + completedTasks + "/" + taskCount + " 项任务";
+    }
+
+    return score + "/100（" + detail + "）";
   }
 
   function inventoryDetail(id) {

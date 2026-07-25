@@ -789,6 +789,24 @@ button:disabled {
   margin: 14px 0 18px;
 }
 
+.outcome-score {
+  margin: 0 0 18px;
+  padding: 12px 16px;
+  border: 1px solid rgba(47, 106, 61, 0.24);
+  border-radius: var(--radius-sm);
+  background: var(--success-soft);
+  color: var(--success);
+  font-weight: 800;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.outcome-score.is-zero {
+  border-color: rgba(167, 59, 53, 0.24);
+  background: var(--danger-soft);
+  color: var(--danger);
+}
+
 .event-art {
   width: min(260px, 100%);
   max-height: 320px;
