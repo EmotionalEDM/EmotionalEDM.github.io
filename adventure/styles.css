@@ -292,6 +292,17 @@ button:disabled {
   color: #eef4f5;
 }
 
+a.ghost-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.menu-card > .menu-actions {
+  margin-top: 18px;
+}
+
 .launch-button {
   min-height: 120px;
   text-align: left;

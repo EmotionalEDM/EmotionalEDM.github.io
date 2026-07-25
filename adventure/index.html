@@ -3,10 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Castle Adventure GUI</title>
+  <title>Castle Adventure</title>
   <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
+  <audio id="background-music" loop preload="metadata">
+    <source src="./music.mp3" type="audio/mpeg">
+  </audio>
   <div class="scene-backdrop"></div>
 
   <main class="app-shell">
@@ -17,6 +20,9 @@
         Choose a clear entry point into the castle. `Adventure Run` keeps the random map and original
         difficulty progression. `Test Layout` uses the fixed INSANE test map with full visibility.
       </p>
+      <div class="menu-actions">
+        <a class="ghost-button home-link" href="https://emotionaledm.github.io/">Back to Blog</a>
+      </div>
 
       <div class="menu-grid menu-grid-routes">
         <div class="menu-block">
@@ -76,6 +82,7 @@
         <div class="hero-actions">
           <button class="ghost-button" id="restart-game" type="button">Restart</button>
           <button class="ghost-button" id="back-menu" type="button">Menu</button>
+          <a class="ghost-button home-link" href="https://emotionaledm.github.io/">Back to Blog</a>
         </div>
       </header>
 

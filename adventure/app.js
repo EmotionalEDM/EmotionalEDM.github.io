@@ -10,6 +10,7 @@
   var state = null;
   var choicePromptActive = false;
   var activeEventQueue = [];
+  var musicPlaybackAttempted = false;
   var currentSessionConfig = {
     difficulty: "easy",
     testMode: false
@@ -44,6 +45,7 @@
   };
 
   var ui = {
+    backgroundMusic: document.getElementById("background-music"),
     menuCard: document.getElementById("menu-card"),
     dashboard: document.getElementById("dashboard"),
     menuSummaryText: document.getElementById("menu-summary-text"),
@@ -86,11 +88,13 @@
 
   bindMenu();
   bindOverlayActions();
+  bindBackgroundMusic();
   renderMenuState();
 
   function bindMenu() {
     ui.menuCard.querySelectorAll("[data-start-mode]").forEach(function (button) {
       button.addEventListener("click", function () {
+        startBackgroundMusic();
         currentSessionConfig = readButtonConfig(button);
         renderMenuState();
         startSession(currentSessionConfig);
@@ -136,6 +140,25 @@
         applyState(game.move(direction));
       }
     });
+  }
+
+  function bindBackgroundMusic() {
+    document.addEventListener("pointerdown", startBackgroundMusic, { once: true });
+    document.addEventListener("keydown", startBackgroundMusic, { once: true });
+  }
+
+  function startBackgroundMusic() {
+    if (musicPlaybackAttempted || !ui.backgroundMusic) {
+      return;
+    }
+
+    musicPlaybackAttempted = true;
+    var playPromise = ui.backgroundMusic.play();
+    if (playPromise && typeof playPromise.catch === "function") {
+      playPromise.catch(function () {
+        musicPlaybackAttempted = false;
+      });
+    }
   }
 
   function bindOverlayActions() {
