@@ -9,16 +9,18 @@
   const songSources = { 'under-the-sun':'music1.mp3', 'energy-action':'music2.mp3', 'edm-party':'music3.mp3' };
   const songTitles = { 'under-the-sun':'Under The Sun', 'energy-action':'Energy Action', 'edm-party':'EDM Party' };
   const trackIds = Object.keys(songSources);
+  const difficultyMeta = { 1:{label:'简单',className:'difficulty-easy'}, 2:{label:'中等',className:'difficulty-medium'}, 4:{label:'困难',className:'difficulty-hard'} };
   const rewardColors = [
     {main:'#45a7ff',light:'#b9e5ff'}, {main:'#48d97d',light:'#bcffd1'}, {main:'#ffd83d',light:'#fff5a4'},
     {main:'#ff65c4',light:'#ffd1ee'}, {main:'#ff2548',light:'#ffb6c0'}, {main:'#ffffff',light:'#ffffff'}, {main:'#ff9b35',light:'#ffe0ab'}
   ];
-  const els = Object.fromEntries(['speed-value','score','combo','rate','life-bar','life-text','judgement','final-score','result-detail','current-song'].map(id => [id, document.getElementById(id)]));
+  const els = Object.fromEntries(['speed-value','score','combo','rate','life-bar','life-text','judgement','final-score','result-detail','current-song','current-difficulty','result-difficulty'].map(id => [id, document.getElementById(id)]));
   let state, raf = 0, betweenLoops = false, audioReady = false, roundTimer = 0, activeTrack = null, trackReadyCallback = null, starTimer = 0, starRun = 0;
   const touchPointers = new Map();
   const randomLanes = () => { const a=[0,1,2,3]; for(let i=3;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]} return a.slice(0,1+Math.floor(Math.random()*4)); };
   function show(name) { Object.entries(screens).forEach(([key,node]) => node.hidden = key !== name); }
-  function updateHud() { els.score.textContent=state.score; els.combo.textContent=state.combo; els.rate.textContent=`${state.rate.toFixed(1)}× / ${(BPM*state.rate).toFixed(1)}`; els['life-bar'].style.width=`${state.life}%`; els['life-text'].textContent=`${state.life} / 100`; els['current-song'].textContent=`当前播放：${songTitles[activeTrack]}`; }
+  function updateDifficulty(element) { element.textContent=state.difficulty.label; element.className=`difficulty-text ${state.difficulty.className}`; }
+  function updateHud() { els.score.textContent=state.score; els.combo.textContent=state.combo; els.rate.textContent=`${state.rate.toFixed(1)}× / ${(BPM*state.rate).toFixed(1)}`; els['life-bar'].style.width=`${state.life}%`; els['life-text'].textContent=`${state.life} / 100`; els['current-song'].textContent=`当前播放：${songTitles[activeTrack]}`; updateDifficulty(els['current-difficulty']); }
   function clearVisualNotes() { [...field.querySelectorAll('.note')].forEach(note => note.remove()); }
   function makeChart() {
     clearVisualNotes(); state.notes=[];
@@ -31,10 +33,10 @@
   function start() {
     if (!audioReady) { loadStatus.textContent='歌曲仍在读取中，请稍候再点击。'; return; }
     stopStarfall(); const hitsPerBeat=+difficulty.value;
-    state={life:100,score:0,combo:0,perfect:0,great:0,bad:0,miss:0,rate:1,drop:+speed.value,offset:+syncOffset.value/1000+.210,hitsPerBeat,step:60/BPM/hitsPerBeat,notes:[]};
+    state={life:100,score:0,combo:0,perfect:0,great:0,bad:0,miss:0,rate:1,drop:+speed.value,offset:+syncOffset.value/1000+.210,hitsPerBeat,difficulty:difficultyMeta[hitsPerBeat],step:60/BPM/hitsPerBeat,notes:[]};
     audio.currentTime=0; audio.playbackRate=1; makeChart(); updateHud(); show('game'); beginRound(); tick();
   }
-  function finish() { state.finished=true; clearTimeout(roundTimer); cancelAnimationFrame(raf); audio.pause(); stopStarfall(); clearVisualNotes(); els['final-score'].textContent=state.score; els['result-detail'].innerHTML=`<span>Perfect ${state.perfect}</span><span>Great ${state.great}</span><span>Bad ${state.bad}</span><span>Miss ${state.miss}</span>`; show('result'); }
+  function finish() { state.finished=true; clearTimeout(roundTimer); cancelAnimationFrame(raf); audio.pause(); stopStarfall(); clearVisualNotes(); els['final-score'].textContent=state.score; updateDifficulty(els['result-difficulty']); els['result-detail'].innerHTML=`<span>Perfect ${state.perfect}</span><span>Great ${state.great}</span><span>Bad ${state.bad}</span><span>Miss ${state.miss}</span>`; show('result'); }
   function judge(note, type) {
     if(note.done || !state) return; note.done=true; note.element?.remove();
     const wasReward=state.combo>=100;

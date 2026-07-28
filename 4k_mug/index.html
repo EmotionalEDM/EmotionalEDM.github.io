@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>4K Mug · Rhythm Game</title>
-  <link rel="stylesheet" href="game.css?v=hexo-home-link">
+  <link rel="stylesheet" href="game.css?v=difficulty-display">
 </head>
 <body>
   <div id="star-field" aria-hidden="true"></div>
@@ -46,6 +46,7 @@
         <div><span>得分</span><strong id="score">0</strong></div>
         <div class="combo-box"><span>COMBO</span><strong id="combo">0</strong></div>
         <div><span>速度 / BPM</span><strong id="rate">1.0× / 64.0</strong></div>
+        <div class="difficulty-box"><span>难度</span><strong id="current-difficulty" class="difficulty-text difficulty-medium">中等</strong></div>
       </header>
       <p id="current-song" class="current-song">当前播放：Under The Sun</p>
       <div class="life-wrap"><div id="life-bar"></div><b id="life-text">100 / 100</b></div>
@@ -65,11 +66,12 @@
       <p class="eyebrow">GAME OVER</p>
       <h1>体力耗尽</h1>
       <div class="result-score"><span>最终得分</span><strong id="final-score">0</strong></div>
+      <p class="result-difficulty">游戏难度：<strong id="result-difficulty" class="difficulty-text difficulty-medium">中等</strong></p>
       <div id="result-detail"></div>
       <button id="retry-button">返回选关</button>
     </section>
   </main>
   <audio id="music" preload="auto"></audio>
-  <script src="game.js?v=touch-controls"></script>
+  <script src="game.js?v=difficulty-display"></script>
 </body>
 </html>
