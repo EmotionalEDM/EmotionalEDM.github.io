@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>4K Mug · Rhythm Game</title>
+  <link rel="stylesheet" href="game.css?v=hexo-home-link">
+</head>
+<body>
+  <div id="star-field" aria-hidden="true"></div>
+  <main id="app">
+    <section id="select-screen" class="panel">
+      <p class="eyebrow">4K MUG / MUSIC GAME</p>
+      <h1>4k音乐游戏</h1>
+      <p class="description">S · D · J · K 四键下落式节奏游戏</p>
+      <label class="speed-control">选择音乐
+        <select id="song-select">
+          <option value="under-the-sun">Under The Sun</option>
+          <option value="energy-action">Energy Action</option>
+          <option value="edm-party">EDM Party</option>
+          <option value="random">随机播放</option>
+        </select>
+      </label>
+      <label class="speed-control">方块下落速度 <output id="speed-value">1.00×</output>
+        <input id="drop-speed" type="range" min="1" max="6" step="0.1" value="1">
+      </label>
+      <label class="speed-control">音画同步偏移 <output id="offset-value">0 ms</output>
+        <input id="sync-offset" type="range" min="-300" max="300" step="10" value="0">
+      </label>
+      <p class="offset-help">正值：方块延后；负值：方块提前。请以音乐第一拍与第一组方块重合为准调整。</p>
+      <label class="speed-control">难度
+        <select id="difficulty">
+          <option value="1">简单：每拍 1 次打击</option>
+          <option value="2" selected>中等：每拍 2 次打击</option>
+          <option value="4">困难：每拍 4 次打击</option>
+        </select>
+      </label>
+      <p class="hint">按键落入判定框时击打。歌曲每循环一次将加速 0.1×。</p>
+      <button id="start-button" disabled>正在载入歌曲…</button>
+      <a class="home-button" href="https://emotionaledm.github.io/">回到个人主页</a>
+      <p id="load-status" class="load-status">正在读取歌曲…</p>
+    </section>
+
+    <section id="game-screen" hidden>
+      <header class="hud">
+        <div><span>得分</span><strong id="score">0</strong></div>
+        <div class="combo-box"><span>COMBO</span><strong id="combo">0</strong></div>
+        <div><span>速度 / BPM</span><strong id="rate">1.0× / 64.0</strong></div>
+      </header>
+      <p id="current-song" class="current-song">当前播放：Under The Sun</p>
+      <div class="life-wrap"><div id="life-bar"></div><b id="life-text">100 / 100</b></div>
+      <div id="playfield" aria-label="四轨游戏区域">
+        <div class="lane" data-lane="0"><kbd>S</kbd></div>
+        <div class="lane" data-lane="1"><kbd>D</kbd></div>
+        <div class="lane" data-lane="2"><kbd>J</kbd></div>
+        <div class="lane" data-lane="3"><kbd>K</kbd></div>
+        <div id="judge-line"></div>
+      </div>
+      <div id="speed-alert" aria-live="polite"></div>
+      <div id="judgement" aria-live="polite"></div>
+      <p class="keys-tip">S　D　J　K</p>
+    </section>
+
+    <section id="result-screen" class="panel" hidden>
+      <p class="eyebrow">GAME OVER</p>
+      <h1>体力耗尽</h1>
+      <div class="result-score"><span>最终得分</span><strong id="final-score">0</strong></div>
+      <div id="result-detail"></div>
+      <button id="retry-button">返回选关</button>
+    </section>
+  </main>
+  <audio id="music" preload="auto"></audio>
+  <script src="game.js?v=touch-controls"></script>
+</body>
+</html>

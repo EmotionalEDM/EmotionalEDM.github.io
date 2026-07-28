@@ -1,0 +1,35 @@
+:root { color-scheme: dark; font-family: Inter, "Noto Sans SC", system-ui, sans-serif; background:#0d1020; color:#f5f7ff; }
+* { box-sizing:border-box; }
+body { margin:0; min-height:100vh; display:grid; place-items:center; background:radial-gradient(circle at 50% 0, #24366e, #0d1020 56%); overflow:hidden; }
+#app { width:min(680px, 96vw); min-height:620px; display:grid; place-items:center; position:relative; z-index:1; }
+#star-field { position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden; }
+.falling-star { position:absolute; top:-32px; color:var(--star-color); font-size:var(--star-size); line-height:1; text-shadow:0 0 8px currentColor,0 0 17px currentColor; animation:star-fall var(--star-duration) linear forwards; }
+@keyframes star-fall { from { transform:translate3d(0,-25px,0) rotate(0deg); opacity:0; } 8% { opacity:.9; } to { transform:translate3d(var(--star-drift),108vh,0) rotate(290deg); opacity:0; } }
+.panel { width:min(540px, 92vw); padding:42px; text-align:center; border:1px solid #6072bb70; border-radius:24px; background:#151b36dd; box-shadow:0 24px 70px #0008; }
+.eyebrow { letter-spacing:.2em; color:#94a5ed; font-size:.75rem; margin:0 0 12px; }
+h1 { margin:0; font-size:2.2rem; } .description { color:#bcc7ef; }
+.speed-control { display:grid; gap:10px; margin:28px 0 10px; color:#fff; font-weight:700; }
+output { color:#7ee7ff; } input { width:100%; accent-color:#7e8dff; } select { width:100%; padding:10px 12px; border:1px solid #7180bc; border-radius:8px; background:#242c50; color:#f5f7ff; font:inherit; }
+.hint { font-size:.85rem; line-height:1.7; color:#9ca9d5; margin:18px 0 28px; }
+.offset-help { color:#7f8ec1; font-size:.75rem; margin:2px 0 14px; }
+button { appearance:none; border:0; border-radius:12px; background:linear-gradient(135deg,#776dff,#53b8ef); color:#fff; font-size:1rem; font-weight:800; padding:14px 34px; cursor:pointer; box-shadow:0 9px 20px #4148a566; } button:hover { filter:brightness(1.15); }
+button:disabled { cursor:wait; opacity:.6; } .load-status { min-height:1.1em; margin:14px 0 0; color:#9ca9d5; font-size:.8rem; }
+.home-button { display:inline-block; margin:14px 0 0; color:#b9c8ff; font-size:.84rem; text-decoration:none; } .home-button:hover { color:#fff; text-decoration:underline; }
+#game-screen { width:100%; position:relative; }
+.hud { display:flex; justify-content:space-between; align-items:end; margin:0 12px 14px; } .hud div { display:grid; gap:2px; } .hud div:last-child { text-align:right; } .hud span { font-size:.68rem; color:#aab6df; letter-spacing:.1em; } .hud strong { font-size:1.36rem; } .combo-box { text-align:center; } #combo { color:#ffe778; font-size:2rem; line-height:1; }
+.current-song { margin:-8px 12px 9px; text-align:center; color:#b8c8ff; font-size:.86rem; font-weight:700; }
+.life-wrap { height:22px; border-radius:99px; background:#242b4f; overflow:hidden; position:relative; margin:0 12px 14px; border:1px solid #7180bc88; } #life-bar { height:100%; width:100%; background:linear-gradient(90deg,#ff4b70,#ffa74c 45%,#76e295); transition:width .15s; } #life-text { position:absolute; inset:1px 0; display:grid; place-items:center; font-size:.75rem; text-shadow:0 1px 2px #000; }
+#speed-alert { height:38px; margin:5px 0 -2px; text-align:center; color:#ff163e; font-size:2rem; font-weight:1000; letter-spacing:.08em; line-height:1.05; text-shadow:0 0 4px #fff, 0 0 14px #ff1038, 0 0 25px #ff1038; }
+#speed-alert:not(:empty) { animation:speed-warning-flash .55s steps(2, end) 8; }
+@keyframes speed-warning-flash { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:.12; transform:scale(1.08); } }
+#playfield { height:min(70vh, 570px); min-height:450px; display:grid; grid-template-columns:repeat(4,1fr); position:relative; overflow:hidden; border:2px solid #7c8bcc; background:linear-gradient(#151c3d,#0d1127); box-shadow:0 12px 35px #0007; touch-action:none; user-select:none; }
+.lane { border-right:1px solid #7280b855; position:relative; } .lane:last-of-type { border:0; } kbd { position:absolute; bottom:10px; left:50%; transform:translateX(-50%); color:#aebcf3; background:#29345e; padding:4px 11px; border-radius:5px; font-size:.78rem; }
+#judge-line { position:absolute; left:0; right:0; height:64px; bottom:50px; border:3px solid #f5dd73; background:#ffe4771a; pointer-events:none; z-index:2; box-shadow:0 0 15px #ffe57077 inset; }
+.note { width:calc(25% - 12px); height:64px; position:absolute; margin-left:6px; border-radius:9px; background:linear-gradient(135deg,#76edff,#677cff); box-shadow:0 5px 14px #4b73ff99; z-index:1; }
+.speed-rush { position:absolute; z-index:4; pointer-events:none; left:-10%; width:120%; bottom:-90px; height:90px; background:linear-gradient(to bottom,transparent 0%,rgba(255,255,255,.12) 20%,rgba(255,255,255,.98) 48%,rgba(255,255,255,.12) 76%,transparent 100%); filter:blur(3px); mix-blend-mode:screen; animation:speed-rush-up .62s cubic-bezier(.12,.7,.26,1) forwards; }
+@keyframes speed-rush-up { from { transform:translateY(0) scaleX(.75); opacity:0; } 12% { opacity:1; } to { transform:translateY(-760px) scaleX(1.2); opacity:0; } }
+.combo-rush { position:absolute; z-index:4; pointer-events:none; left:-10%; width:120%; bottom:-110px; height:110px; background:linear-gradient(to bottom,transparent 0%,rgba(255,94,198,.18) 18%,#62caff 34%,#80ff9d 48%,#fff26b 62%,#ff6e91 76%,transparent 100%); filter:blur(4px); mix-blend-mode:screen; animation:combo-rush-up .9s cubic-bezier(.08,.75,.22,1) forwards; }
+@keyframes combo-rush-up { from { transform:translateY(0) scaleX(.55); opacity:0; } 10% { opacity:1; } to { transform:translateY(-780px) scaleX(1.25); opacity:0; } }
+.lane.active { background:#a7c6ff28; } #judgement { height:30px; text-align:center; font-weight:900; font-size:1.45rem; margin:10px 0 -2px; text-shadow:0 2px 5px #000; } .keys-tip { text-align:center; color:#8493ca; letter-spacing:.72em; margin:0; }
+.result-score { margin:24px 0; display:grid; color:#bac5eb; gap:4px; } .result-score strong { color:#ffe778; font-size:3.2rem; } #result-detail { display:flex; justify-content:center; gap:16px; color:#b9c4e9; font-size:.9rem; }
+@media (max-width:500px) { .panel { padding:30px 22px; } #playfield { min-height:440px; } .hud strong { font-size:1.1rem; } }
