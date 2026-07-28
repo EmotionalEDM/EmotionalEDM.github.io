@@ -170,7 +170,7 @@
   ['loadedmetadata','loadeddata','canplay','canplaythrough','durationchange'].forEach(event => audio.addEventListener(event, markAudioReady));
   audio.addEventListener('error', () => { audioReady=false; trackReadyCallback=null; startButton.disabled=true; loadStatus.textContent=`歌曲无法读取（错误 ${audio.error?.code ?? '未知'}）：请使用 run_game.bat 打开的浏览器页面。`; });
   loadSelectedSong();
-  setTimeout(() => { if (!audioReady) loadStatus.textContent='歌曲读取超时：请关闭网页后重新运行 run_game.bat，并在外部浏览器访问 http://localhost:8000/。'; }, 8000);
+  setTimeout(() => { if (!audioReady) loadStatus.textContent='歌曲读取超时：刷新重试'; }, 8000);
   document.addEventListener('keydown', e=>{ const lane={s:0,d:1,j:2,k:3}[e.key.toLowerCase()]; if(lane===undefined || e.repeat) return; e.preventDefault(); field.querySelector(`[data-lane="${lane}"]`)?.classList.add('active'); press(lane); });
   document.addEventListener('keyup', e=>{const lane={s:0,d:1,j:2,k:3}[e.key.toLowerCase()]; if(lane!==undefined)field.querySelector(`[data-lane="${lane}"]`)?.classList.remove('active');});
   function touchLaneFromEvent(event) {
